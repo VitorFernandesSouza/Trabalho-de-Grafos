@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2025-11-07">
+    <creator>NetworkX 3.4.2</creator>
+  </meta>
+  <graph defaultedgetype="directed" mode="static" name="">
+    <nodes>
+      <node id="bycoffe" label="bycoffe" />
+      <node id="MrSteel22" label="MrSteel22" />
+      <node id="jayb" label="jayb" />
+      <node id="easella" label="easella" />
+      <node id="luizlf" label="luizlf" />
+      <node id="Mlewis8111" label="Mlewis8111" />
+      <node id="harfelyleipary" label="harfelyleipary" />
+      <node id="dmil" label="dmil" />
+      <node id="a2435191" label="a2435191" />
+      <node id="evanderson3" label="evanderson3" />
+      <node id="craigatron" label="craigatron" />
+      <node id="mpeven" label="mpeven" />
+      <node id="hack-r" label="hack-r" />
+      <node id="ArvinAzimifard" label="ArvinAzimifard" />
+      <node id="sal037" label="sal037" />
+      <node id="ryanj-0" label="ryanj-0" />
+      <node id="Montana" label="Montana" />
+      <node id="brunomioto" label="brunomioto" />
+      <node id="RJSSR" label="RJSSR" />
+      <node id="trbarron" label="trbarron" />
+      <node id="bhrdj" label="bhrdj" />
+      <node id="blazespinnaker" label="blazespinnaker" />
+      <node id="mbrownsword-edison" label="mbrownsword-edison" />
+      <node id="pschloss" label="pschloss" />
+      <node id="pavan078" label="pavan078" />
+      <node id="m3gan0" label="m3gan0" />
+      <node id="oroiael" label="oroiael" />
+      <node id="clibassi" label="clibassi" />
+      <node id="jordan794" label="jordan794" />
+      <node id="Eflores89" label="Eflores89" />
+      <node id="adlainewson" label="adlainewson" />
+      <node id="gusberinger" label="gusberinger" />
+      <node id="jooncodes" label="jooncodes" />
+      <node id="sea-erkin" label="sea-erkin" />
+      <node id="mvastola" label="mvastola" />
+      <node id="kulnor" label="kulnor" />
+      <node id="astroboogie" label="astroboogie" />
+      <node id="texadactyl" label="texadactyl" />
+      <node id="aakashsur" label="aakashsur" />
+      <node id="JalalMirzayev" label="JalalMirzayev" />
+      <node id="karleenschaffer" label="karleenschaffer" />
+      <node id="coatk1" label="coatk1" />
+      <node id="gobbedy" label="gobbedy" />
+      <node id="jrhudlstn" label="jrhudlstn" />
+      <node id="radcliffem" label="radcliffem" />
+      <node id="asyncify" label="asyncify" />
+      <node id="OscarAgbor" label="OscarAgbor" />
+      <node id="yifanwu" label="yifanwu" />
+      <node id="AmeliaMN" label="AmeliaMN" />
+      <node id="ce3hv" label="ce3hv" />
+      <node id="danielsonnnn321" label="danielsonnnn321" />
+      <node id="lesuerje1" label="lesuerje1" />
+      <node id="steve-kasica" label="steve-kasica" />
+      <node id="Hoda-abzh" label="Hoda-abzh" />
+    </nodes>
+    <edges>
+      <edge source="bycoffe" target="MrSteel22" id="0" weight="3" />
+      <edge source="bycoffe" target="yifanwu" id="1" weight="3" />
+      <edge source="jayb" target="easella" id="2" weight="12" />
+      <edge source="jayb" target="luizlf" id="3" weight="3" />
+      <edge source="jayb" target="Mlewis8111" id="4" weight="6" />
+      <edge source="jayb" target="harfelyleipary" id="5" weight="3" />
+      <edge source="jayb" target="dmil" id="6" weight="3" />
+      <edge source="jayb" target="a2435191" id="7" weight="3" />
+      <edge source="jayb" target="evanderson3" id="8" weight="3" />
+      <edge source="jayb" target="craigatron" id="9" weight="3" />
+      <edge source="jayb" target="mpeven" id="10" weight="3" />
+      <edge source="jayb" target="hack-r" id="11" weight="3" />
+      <edge source="jayb" target="ArvinAzimifard" id="12" weight="3" />
+      <edge source="jayb" target="sal037" id="13" weight="3" />
+      <edge source="jayb" target="ryanj-0" id="14" weight="3" />
+      <edge source="jayb" target="Montana" id="15" weight="9" />
+      <edge source="jayb" target="brunomioto" id="16" weight="6" />
+      <edge source="jayb" target="RJSSR" id="17" weight="6" />
+      <edge source="jayb" target="trbarron" id="18" weight="3" />
+      <edge source="jayb" target="bhrdj" id="19" weight="3" />
+      <edge source="jayb" target="blazespinnaker" id="20" weight="9" />
+      <edge source="jayb" target="mbrownsword-edison" id="21" weight="3" />
+      <edge source="jayb" target="pschloss" id="22" weight="6" />
+      <edge source="jayb" target="pavan078" id="23" weight="3" />
+      <edge source="jayb" target="m3gan0" id="24" weight="3" />
+      <edge source="jayb" target="oroiael" id="25" weight="3" />
+      <edge source="jayb" target="clibassi" id="26" weight="3" />
+      <edge source="jayb" target="Eflores89" id="27" weight="3" />
+      <edge source="jayb" target="adlainewson" id="28" weight="3" />
+      <edge source="jayb" target="gusberinger" id="29" weight="3" />
+      <edge source="jayb" target="jooncodes" id="30" weight="3" />
+      <edge source="jayb" target="sea-erkin" id="31" weight="3" />
+      <edge source="jayb" target="mvastola" id="32" weight="3" />
+      <edge source="jayb" target="kulnor" id="33" weight="3" />
+      <edge source="jayb" target="astroboogie" id="34" weight="3" />
+      <edge source="jayb" target="texadactyl" id="35" weight="3" />
+      <edge source="jayb" target="aakashsur" id="36" weight="3" />
+      <edge source="jayb" target="JalalMirzayev" id="37" weight="3" />
+      <edge source="jayb" target="coatk1" id="38" weight="3" />
+      <edge source="jayb" target="gobbedy" id="39" weight="9" />
+      <edge source="jayb" target="jrhudlstn" id="40" weight="3" />
+      <edge source="jayb" target="AmeliaMN" id="41" weight="3" />
+      <edge source="jayb" target="ce3hv" id="42" weight="3" />
+      <edge source="jayb" target="danielsonnnn321" id="43" weight="3" />
+      <edge source="jayb" target="lesuerje1" id="44" weight="3" />
+      <edge source="jayb" target="steve-kasica" id="45" weight="3" />
+      <edge source="jayb" target="Hoda-abzh" id="46" weight="3" />
+      <edge source="dmil" target="jordan794" id="47" weight="3" />
+      <edge source="dmil" target="karleenschaffer" id="48" weight="3" />
+      <edge source="dmil" target="OscarAgbor" id="49" weight="3" />
+      <edge source="radcliffem" target="asyncify" id="50" weight="3" />
+    </edges>
+  </graph>
+</gexf>
