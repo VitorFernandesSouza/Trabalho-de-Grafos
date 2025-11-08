@@ -9,13 +9,21 @@ logger = setup_logger(__name__)
 
 
 class GitHubDataCollector:
-    """Coleta issues e pull requests de um repositório do GitHub usando o token do .env."""
+    """
+    Coleta dados de issues, pull requests, comentários e reviews
+    de um repositório público do GitHub.
+
+    Isso permite construir:
+      - Grafo 1: comentários em issues ou pull requests
+      - Grafo 2: fechamentos de issues por outro usuário
+      - Grafo 3: revisões, aprovações e merges de pull requests
+    """
 
     def __init__(self, repo: str, token: str) -> None:
         if not repo:
-            raise ValueError("Repositório não informado. Defina GITHUB_REPO no .env ou passe no código.")
+            raise ValueError("Repositório não informado.")
         if not token:
-            raise ValueError("Token não informado. Defina GITHUB_TOKEN no .env.")
+            raise ValueError("Token não informado.")
 
         self.repo = repo
         self.token = token.strip()
@@ -34,7 +42,7 @@ class GitHubDataCollector:
 
         if resp.status_code == 401:
             logger.error("Token inválido ou sem permissão para este repositório.")
-            raise SystemExit("Encerrando execução: token não autorizado.")
+            raise SystemExit("Encerrando execução.")
 
         if resp.status_code == 403 and "rate limit" in resp.text.lower():
             logger.error("Limite de requisições atingido para este token.")
@@ -44,8 +52,7 @@ class GitHubDataCollector:
 
     def _get_single_page(self, resource: str, state: str) -> List[Dict]:
         """
-        Coleta APENAS a primeira página (até 100 registros) para evitar 422
-        em repositório gigante. Nada de page=.
+        Coleta uma única página de um recurso (issues ou pulls) para evitar erro 422.
         """
         url = f"{self.base_url}/{resource}?state={state}&per_page=100"
         resp = self._request(url)
@@ -62,15 +69,167 @@ class GitHubDataCollector:
         logger.info(f"{len(data)} registros retornados de {resource}.")
         return data
 
+    # ============================================================
+    # Recursos principais: issues e pull requests
+    # ============================================================
+
     def get_issues(self, state: str = "all") -> List[Dict]:
+        """
+        Issues do repositório (inclui issues normais e issues de PR).
+        Usadas para:
+          - fechar issue (Grafo 2)
+          - comentários em issues (Grafo 1)
+        """
         logger.info(f"Coletando issues (state={state})...")
         return self._get_single_page("issues", state)
 
     def get_pull_requests(self, state: str = "all") -> List[Dict]:
+        """
+        Pull requests do repositório.
+        Usadas para:
+          - merges de PR (Grafo 3) via campo merged_by
+          - comentários em PR (Grafo 1)
+          - reviews em PR (Grafo 3)
+        """
         logger.info(f"Coletando pull requests (state={state})...")
         return self._get_single_page("pulls", state)
 
-    def save_data(self, issues: List[Dict], pulls: List[Dict], output_dir: str = "data") -> None:
+    # ============================================================
+    # Comentários em issues e pulls  -> Grafo 1
+    # ============================================================
+
+    def get_issue_comments_bulk(self, issues: List[Dict]) -> List[Dict]:
+        """
+        Coleta comentários de todas as issues informadas.
+        Cada comentário recebe o campo extra "issue_number".
+        """
+        all_comments: List[Dict] = []
+
+        for issue in issues:
+            number = issue.get("number")
+            if number is None:
+                continue
+
+            url = f"{self.base_url}/issues/{number}/comments?per_page=100"
+            resp = self._request(url)
+
+            if resp.status_code == 422:
+                logger.warning(
+                    f"422 ao buscar comentários da issue {number}. Ignorando."
+                )
+                continue
+
+            resp.raise_for_status()
+            comments = resp.json()
+
+            for c in comments:
+                c["issue_number"] = number
+
+            logger.info(
+                f"Issue {number}: {len(comments)} comentários coletados."
+            )
+            all_comments.extend(comments)
+
+        logger.info(
+            f"Total de comentários em issues coletados: {len(all_comments)}"
+        )
+        return all_comments
+
+    def get_pull_comments_bulk(self, pulls: List[Dict]) -> List[Dict]:
+        """
+        Coleta comentários de revisão de código em todas as PRs.
+        Cada comentário recebe o campo extra "pull_number".
+        """
+        all_comments: List[Dict] = []
+
+        for pr in pulls:
+            number = pr.get("number")
+            if number is None:
+                continue
+
+            url = f"{self.base_url}/pulls/{number}/comments?per_page=100"
+            resp = self._request(url)
+
+            if resp.status_code == 422:
+                logger.warning(
+                    f"422 ao buscar comentários da PR {number}. Ignorando."
+                )
+                continue
+
+            resp.raise_for_status()
+            comments = resp.json()
+
+            for c in comments:
+                c["pull_number"] = number
+
+            logger.info(
+                f"Pull request {number}: {len(comments)} comentários coletados."
+            )
+            all_comments.extend(comments)
+
+        logger.info(
+            f"Total de comentários em pull requests coletados: {len(all_comments)}"
+        )
+        return all_comments
+
+    # ============================================================
+    # Reviews de pull requests  -> Grafo 3
+    # ============================================================
+
+    def get_pull_reviews_bulk(self, pulls: List[Dict]) -> List[Dict]:
+        """
+        Coleta reviews de todas as PRs informadas.
+        Cada review recebe o campo extra "pull_number".
+        Usado no Grafo 3 como arestas de revisão/aprovação.
+        """
+        all_reviews: List[Dict] = []
+
+        for pr in pulls:
+            number = pr.get("number")
+            if number is None:
+                continue
+
+            url = f"{self.base_url}/pulls/{number}/reviews?per_page=100"
+            resp = self._request(url)
+
+            if resp.status_code == 422:
+                logger.warning(
+                    f"422 ao buscar reviews da PR {number}. Ignorando."
+                )
+                continue
+
+            resp.raise_for_status()
+            reviews = resp.json()
+
+            for r in reviews:
+                r["pull_number"] = number
+
+            logger.info(
+                f"Pull request {number}: {len(reviews)} reviews coletados."
+            )
+            all_reviews.extend(reviews)
+
+        logger.info(
+            f"Total de reviews de pull requests coletados: {len(all_reviews)}"
+        )
+        return all_reviews
+
+    # ============================================================
+    # Salvamento em disco
+    # ============================================================
+
+    def save_data(
+        self,
+        issues: List[Dict],
+        pulls: List[Dict],
+        issue_comments: List[Dict],
+        pull_comments: List[Dict],
+        pull_reviews: List[Dict],
+        output_dir: str = "data",
+    ) -> None:
+        """
+        Salva todos os dados em arquivos JSON para uso posterior na construção dos grafos.
+        """
         logger.info("Salvando dados em arquivos JSON...")
 
         os.makedirs(output_dir, exist_ok=True)
@@ -81,4 +240,19 @@ class GitHubDataCollector:
         with open(os.path.join(output_dir, "pulls.json"), "w", encoding="utf-8") as f:
             json.dump(pulls, f, indent=2)
 
-        logger.info("Dados salvos com sucesso em data/issues.json e data/pulls.json")
+        with open(
+            os.path.join(output_dir, "issue_comments.json"), "w", encoding="utf-8"
+        ) as f:
+            json.dump(issue_comments, f, indent=2)
+
+        with open(
+            os.path.join(output_dir, "pull_comments.json"), "w", encoding="utf-8"
+        ) as f:
+            json.dump(pull_comments, f, indent=2)
+
+        with open(
+            os.path.join(output_dir, "pull_reviews.json"), "w", encoding="utf-8"
+        ) as f:
+            json.dump(pull_reviews, f, indent=2)
+
+        logger.info("Dados salvos com sucesso em data/*.json")

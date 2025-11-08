@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2025-11-07">
+    <creator>NetworkX 3.4.2</creator>
+  </meta>
+  <graph defaultedgetype="directed" mode="static" name="">
+    <nodes>
+      <node id="Managor" label="Managor" />
+      <node id="gvshemanth30034" label="gvshemanth30034" />
+      <node id="nelsonfigueroa" label="nelsonfigueroa" />
+      <node id="leonvsc" label="leonvsc" />
+      <node id="dmmqz" label="dmmqz" />
+      <node id="kbdharun" label="kbdharun" />
+      <node id="badhon495" label="badhon495" />
+      <node id="ivanbaluta" label="ivanbaluta" />
+      <node id="TheRootDaemon" label="TheRootDaemon" />
+      <node id="KristopherLeads" label="KristopherLeads" />
+      <node id="kant" label="kant" />
+      <node id="tranzystorekk" label="tranzystorekk" />
+      <node id="msaf9" label="msaf9" />
+      <node id="DustMerlin" label="DustMerlin" />
+      <node id="FazleArefin" label="FazleArefin" />
+      <node id="znarfm" label="znarfm" />
+      <node id="sebastiaanspeck" label="sebastiaanspeck" />
+      <node id="AttackThwarter" label="AttackThwarter" />
+      <node id="dependabot[bot]" label="dependabot[bot]" />
+      <node id="Madhu696969" label="Madhu696969" />
+      <node id="sapbotgit" label="sapbotgit" />
+    </nodes>
+    <edges>
+      <edge source="Managor" target="gvshemanth30034" id="0" weight="3" />
+      <edge source="Managor" target="nelsonfigueroa" id="1" weight="3" />
+      <edge source="Managor" target="znarfm" id="2" weight="3" />
+      <edge source="Managor" target="badhon495" id="3" weight="6" />
+      <edge source="Managor" target="kant" id="4" weight="6" />
+      <edge source="Managor" target="DustMerlin" id="5" weight="3" />
+      <edge source="Managor" target="msaf9" id="6" weight="3" />
+      <edge source="Managor" target="dmmqz" id="7" weight="3" />
+      <edge source="Managor" target="AttackThwarter" id="8" weight="3" />
+      <edge source="Managor" target="ivanbaluta" id="9" weight="3" />
+      <edge source="Managor" target="Madhu696969" id="10" weight="3" />
+      <edge source="leonvsc" target="dmmqz" id="11" weight="3" />
+      <edge source="dmmqz" target="Managor" id="12" weight="9" />
+      <edge source="dmmqz" target="tranzystorekk" id="13" weight="3" />
+      <edge source="dmmqz" target="kant" id="14" weight="3" />
+      <edge source="kbdharun" target="badhon495" id="15" weight="3" />
+      <edge source="kbdharun" target="dmmqz" id="16" weight="3" />
+      <edge source="kbdharun" target="msaf9" id="17" weight="3" />
+      <edge source="kbdharun" target="Managor" id="18" weight="3" />
+      <edge source="ivanbaluta" target="TheRootDaemon" id="19" weight="3" />
+      <edge source="ivanbaluta" target="DustMerlin" id="20" weight="3" />
+      <edge source="ivanbaluta" target="Managor" id="21" weight="3" />
+      <edge source="ivanbaluta" target="sapbotgit" id="22" weight="3" />
+      <edge source="ivanbaluta" target="AttackThwarter" id="23" weight="3" />
+      <edge source="KristopherLeads" target="kant" id="24" weight="3" />
+      <edge source="msaf9" target="DustMerlin" id="25" weight="3" />
+      <edge source="FazleArefin" target="znarfm" id="26" weight="3" />
+      <edge source="znarfm" target="Managor" id="27" weight="3" />
+      <edge source="sebastiaanspeck" target="dmmqz" id="28" weight="3" />
+      <edge source="sebastiaanspeck" target="dependabot[bot]" id="29" weight="3" />
+    </edges>
+  </graph>
+</gexf>

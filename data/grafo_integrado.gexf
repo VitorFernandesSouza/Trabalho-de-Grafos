@@ -5,113 +5,153 @@
   </meta>
   <graph defaultedgetype="directed" mode="static" name="">
     <nodes>
-      <node id="bycoffe" label="bycoffe" />
-      <node id="MrSteel22" label="MrSteel22" />
-      <node id="jayb" label="jayb" />
-      <node id="easella" label="easella" />
-      <node id="luizlf" label="luizlf" />
-      <node id="Mlewis8111" label="Mlewis8111" />
-      <node id="harfelyleipary" label="harfelyleipary" />
-      <node id="dmil" label="dmil" />
-      <node id="a2435191" label="a2435191" />
-      <node id="evanderson3" label="evanderson3" />
-      <node id="craigatron" label="craigatron" />
-      <node id="mpeven" label="mpeven" />
-      <node id="hack-r" label="hack-r" />
-      <node id="ArvinAzimifard" label="ArvinAzimifard" />
-      <node id="sal037" label="sal037" />
-      <node id="ryanj-0" label="ryanj-0" />
-      <node id="Montana" label="Montana" />
-      <node id="brunomioto" label="brunomioto" />
-      <node id="RJSSR" label="RJSSR" />
-      <node id="trbarron" label="trbarron" />
-      <node id="bhrdj" label="bhrdj" />
-      <node id="blazespinnaker" label="blazespinnaker" />
-      <node id="mbrownsword-edison" label="mbrownsword-edison" />
-      <node id="pschloss" label="pschloss" />
-      <node id="pavan078" label="pavan078" />
-      <node id="m3gan0" label="m3gan0" />
-      <node id="oroiael" label="oroiael" />
-      <node id="clibassi" label="clibassi" />
-      <node id="jordan794" label="jordan794" />
-      <node id="Eflores89" label="Eflores89" />
-      <node id="adlainewson" label="adlainewson" />
-      <node id="gusberinger" label="gusberinger" />
-      <node id="jooncodes" label="jooncodes" />
-      <node id="sea-erkin" label="sea-erkin" />
-      <node id="mvastola" label="mvastola" />
-      <node id="kulnor" label="kulnor" />
-      <node id="astroboogie" label="astroboogie" />
-      <node id="texadactyl" label="texadactyl" />
-      <node id="aakashsur" label="aakashsur" />
-      <node id="JalalMirzayev" label="JalalMirzayev" />
-      <node id="karleenschaffer" label="karleenschaffer" />
-      <node id="coatk1" label="coatk1" />
-      <node id="gobbedy" label="gobbedy" />
-      <node id="jrhudlstn" label="jrhudlstn" />
-      <node id="radcliffem" label="radcliffem" />
-      <node id="asyncify" label="asyncify" />
-      <node id="OscarAgbor" label="OscarAgbor" />
-      <node id="yifanwu" label="yifanwu" />
-      <node id="AmeliaMN" label="AmeliaMN" />
-      <node id="ce3hv" label="ce3hv" />
-      <node id="danielsonnnn321" label="danielsonnnn321" />
-      <node id="lesuerje1" label="lesuerje1" />
-      <node id="steve-kasica" label="steve-kasica" />
-      <node id="Hoda-abzh" label="Hoda-abzh" />
+      <node id="Managor" label="Managor" />
+      <node id="DustMerlin" label="DustMerlin" />
+      <node id="tldr-bot" label="tldr-bot" />
+      <node id="ivanbaluta" label="ivanbaluta" />
+      <node id="gvshemanth30034" label="gvshemanth30034" />
+      <node id="CLAassistant" label="CLAassistant" />
+      <node id="rafsasinski" label="rafsasinski" />
+      <node id="parth-117" label="parth-117" />
+      <node id="zhuhongboAAA" label="zhuhongboAAA" />
+      <node id="badhon495" label="badhon495" />
+      <node id="kbdharun" label="kbdharun" />
+      <node id="Magrid0" label="Magrid0" />
+      <node id="znarfm" label="znarfm" />
+      <node id="sebastiaanspeck" label="sebastiaanspeck" />
+      <node id="msaf9" label="msaf9" />
+      <node id="dmmqz" label="dmmqz" />
+      <node id="yushun-feng" label="yushun-feng" />
+      <node id="kant" label="kant" />
+      <node id="Madhu696969" label="Madhu696969" />
+      <node id="sapbotgit" label="sapbotgit" />
+      <node id="TheRootDaemon" label="TheRootDaemon" />
+      <node id="FazleArefin" label="FazleArefin" />
+      <node id="SethFalco" label="SethFalco" />
+      <node id="acuteenvy" label="acuteenvy" />
+      <node id="AttackThwarter" label="AttackThwarter" />
+      <node id="Seito1090" label="Seito1090" />
+      <node id="sri-sethu" label="sri-sethu" />
+      <node id="nelsonfigueroa" label="nelsonfigueroa" />
+      <node id="leonvsc" label="leonvsc" />
+      <node id="KristopherLeads" label="KristopherLeads" />
+      <node id="tranzystorekk" label="tranzystorekk" />
+      <node id="dependabot[bot]" label="dependabot[bot]" />
+      <node id="MrMw3" label="MrMw3" />
+      <node id="SpikeTheDragon40k" label="SpikeTheDragon40k" />
+      <node id="karthik-script" label="karthik-script" />
+      <node id="spageektti" label="spageektti" />
+      <node id="einverne" label="einverne" />
+      <node id="MachiavelliII" label="MachiavelliII" />
     </nodes>
     <edges>
-      <edge source="bycoffe" target="MrSteel22" id="0" weight="3" />
-      <edge source="bycoffe" target="yifanwu" id="1" weight="3" />
-      <edge source="jayb" target="easella" id="2" weight="12" />
-      <edge source="jayb" target="luizlf" id="3" weight="3" />
-      <edge source="jayb" target="Mlewis8111" id="4" weight="6" />
-      <edge source="jayb" target="harfelyleipary" id="5" weight="3" />
-      <edge source="jayb" target="dmil" id="6" weight="3" />
-      <edge source="jayb" target="a2435191" id="7" weight="3" />
-      <edge source="jayb" target="evanderson3" id="8" weight="3" />
-      <edge source="jayb" target="craigatron" id="9" weight="3" />
-      <edge source="jayb" target="mpeven" id="10" weight="3" />
-      <edge source="jayb" target="hack-r" id="11" weight="3" />
-      <edge source="jayb" target="ArvinAzimifard" id="12" weight="3" />
-      <edge source="jayb" target="sal037" id="13" weight="3" />
-      <edge source="jayb" target="ryanj-0" id="14" weight="3" />
-      <edge source="jayb" target="Montana" id="15" weight="9" />
-      <edge source="jayb" target="brunomioto" id="16" weight="6" />
-      <edge source="jayb" target="RJSSR" id="17" weight="6" />
-      <edge source="jayb" target="trbarron" id="18" weight="3" />
-      <edge source="jayb" target="bhrdj" id="19" weight="3" />
-      <edge source="jayb" target="blazespinnaker" id="20" weight="9" />
-      <edge source="jayb" target="mbrownsword-edison" id="21" weight="3" />
-      <edge source="jayb" target="pschloss" id="22" weight="6" />
-      <edge source="jayb" target="pavan078" id="23" weight="3" />
-      <edge source="jayb" target="m3gan0" id="24" weight="3" />
-      <edge source="jayb" target="oroiael" id="25" weight="3" />
-      <edge source="jayb" target="clibassi" id="26" weight="3" />
-      <edge source="jayb" target="Eflores89" id="27" weight="3" />
-      <edge source="jayb" target="adlainewson" id="28" weight="3" />
-      <edge source="jayb" target="gusberinger" id="29" weight="3" />
-      <edge source="jayb" target="jooncodes" id="30" weight="3" />
-      <edge source="jayb" target="sea-erkin" id="31" weight="3" />
-      <edge source="jayb" target="mvastola" id="32" weight="3" />
-      <edge source="jayb" target="kulnor" id="33" weight="3" />
-      <edge source="jayb" target="astroboogie" id="34" weight="3" />
-      <edge source="jayb" target="texadactyl" id="35" weight="3" />
-      <edge source="jayb" target="aakashsur" id="36" weight="3" />
-      <edge source="jayb" target="JalalMirzayev" id="37" weight="3" />
-      <edge source="jayb" target="coatk1" id="38" weight="3" />
-      <edge source="jayb" target="gobbedy" id="39" weight="9" />
-      <edge source="jayb" target="jrhudlstn" id="40" weight="3" />
-      <edge source="jayb" target="AmeliaMN" id="41" weight="3" />
-      <edge source="jayb" target="ce3hv" id="42" weight="3" />
-      <edge source="jayb" target="danielsonnnn321" id="43" weight="3" />
-      <edge source="jayb" target="lesuerje1" id="44" weight="3" />
-      <edge source="jayb" target="steve-kasica" id="45" weight="3" />
-      <edge source="jayb" target="Hoda-abzh" id="46" weight="3" />
-      <edge source="dmil" target="jordan794" id="47" weight="3" />
-      <edge source="dmil" target="karleenschaffer" id="48" weight="3" />
-      <edge source="dmil" target="OscarAgbor" id="49" weight="3" />
-      <edge source="radcliffem" target="asyncify" id="50" weight="3" />
+      <edge source="Managor" target="DustMerlin" id="0" weight="97" />
+      <edge source="Managor" target="gvshemanth30034" id="1" weight="5" />
+      <edge source="Managor" target="parth-117" id="2" weight="2" />
+      <edge source="Managor" target="zhuhongboAAA" id="3" weight="78" />
+      <edge source="Managor" target="Magrid0" id="4" weight="4" />
+      <edge source="Managor" target="Madhu696969" id="5" weight="5" />
+      <edge source="Managor" target="sapbotgit" id="6" weight="28" />
+      <edge source="Managor" target="FazleArefin" id="7" weight="6" />
+      <edge source="Managor" target="rafsasinski" id="8" weight="10" />
+      <edge source="Managor" target="TheRootDaemon" id="9" weight="12" />
+      <edge source="Managor" target="znarfm" id="10" weight="31" />
+      <edge source="Managor" target="AttackThwarter" id="11" weight="51" />
+      <edge source="Managor" target="Seito1090" id="12" weight="10" />
+      <edge source="Managor" target="nelsonfigueroa" id="13" weight="11" />
+      <edge source="Managor" target="badhon495" id="14" weight="26" />
+      <edge source="Managor" target="kant" id="15" weight="30" />
+      <edge source="Managor" target="msaf9" id="16" weight="11" />
+      <edge source="Managor" target="dmmqz" id="17" weight="19" />
+      <edge source="Managor" target="ivanbaluta" id="18" weight="23" />
+      <edge source="Managor" target="kbdharun" id="19" weight="4" />
+      <edge source="Managor" target="tranzystorekk" id="20" weight="4" />
+      <edge source="Managor" target="sri-sethu" id="21" weight="12" />
+      <edge source="tldr-bot" target="ivanbaluta" id="22" weight="10" />
+      <edge source="tldr-bot" target="Managor" id="23" weight="8" />
+      <edge source="tldr-bot" target="DustMerlin" id="24" weight="6" />
+      <edge source="tldr-bot" target="parth-117" id="25" weight="2" />
+      <edge source="tldr-bot" target="zhuhongboAAA" id="26" weight="16" />
+      <edge source="tldr-bot" target="msaf9" id="27" weight="2" />
+      <edge source="tldr-bot" target="dmmqz" id="28" weight="2" />
+      <edge source="tldr-bot" target="yushun-feng" id="29" weight="2" />
+      <edge source="tldr-bot" target="kant" id="30" weight="2" />
+      <edge source="tldr-bot" target="Madhu696969" id="31" weight="4" />
+      <edge source="tldr-bot" target="sapbotgit" id="32" weight="8" />
+      <edge source="ivanbaluta" target="znarfm" id="33" weight="2" />
+      <edge source="ivanbaluta" target="Managor" id="34" weight="71" />
+      <edge source="ivanbaluta" target="sapbotgit" id="35" weight="21" />
+      <edge source="ivanbaluta" target="TheRootDaemon" id="36" weight="7" />
+      <edge source="ivanbaluta" target="DustMerlin" id="37" weight="7" />
+      <edge source="ivanbaluta" target="AttackThwarter" id="38" weight="7" />
+      <edge source="ivanbaluta" target="kant" id="39" weight="4" />
+      <edge source="CLAassistant" target="rafsasinski" id="40" weight="2" />
+      <edge source="CLAassistant" target="parth-117" id="41" weight="2" />
+      <edge source="CLAassistant" target="zhuhongboAAA" id="42" weight="2" />
+      <edge source="CLAassistant" target="yushun-feng" id="43" weight="2" />
+      <edge source="CLAassistant" target="Madhu696969" id="44" weight="2" />
+      <edge source="CLAassistant" target="sapbotgit" id="45" weight="4" />
+      <edge source="badhon495" target="kbdharun" id="46" weight="2" />
+      <edge source="kbdharun" target="Managor" id="47" weight="37" />
+      <edge source="kbdharun" target="DustMerlin" id="48" weight="18" />
+      <edge source="kbdharun" target="znarfm" id="49" weight="14" />
+      <edge source="kbdharun" target="badhon495" id="50" weight="11" />
+      <edge source="kbdharun" target="dmmqz" id="51" weight="7" />
+      <edge source="kbdharun" target="msaf9" id="52" weight="7" />
+      <edge source="kbdharun" target="kant" id="53" weight="4" />
+      <edge source="kbdharun" target="dependabot[bot]" id="54" weight="4" />
+      <edge source="kbdharun" target="ivanbaluta" id="55" weight="4" />
+      <edge source="znarfm" target="Managor" id="56" weight="25" />
+      <edge source="znarfm" target="sri-sethu" id="57" weight="28" />
+      <edge source="znarfm" target="AttackThwarter" id="58" weight="4" />
+      <edge source="sebastiaanspeck" target="Managor" id="59" weight="26" />
+      <edge source="sebastiaanspeck" target="DustMerlin" id="60" weight="6" />
+      <edge source="sebastiaanspeck" target="yushun-feng" id="61" weight="4" />
+      <edge source="sebastiaanspeck" target="msaf9" id="62" weight="20" />
+      <edge source="sebastiaanspeck" target="dmmqz" id="63" weight="17" />
+      <edge source="sebastiaanspeck" target="AttackThwarter" id="64" weight="20" />
+      <edge source="sebastiaanspeck" target="sri-sethu" id="65" weight="12" />
+      <edge source="sebastiaanspeck" target="dependabot[bot]" id="66" weight="7" />
+      <edge source="sebastiaanspeck" target="kbdharun" id="67" weight="4" />
+      <edge source="sebastiaanspeck" target="znarfm" id="68" weight="4" />
+      <edge source="sebastiaanspeck" target="kant" id="69" weight="4" />
+      <edge source="sebastiaanspeck" target="badhon495" id="70" weight="4" />
+      <edge source="sebastiaanspeck" target="ivanbaluta" id="71" weight="4" />
+      <edge source="sebastiaanspeck" target="sapbotgit" id="72" weight="8" />
+      <edge source="sebastiaanspeck" target="Seito1090" id="73" weight="4" />
+      <edge source="msaf9" target="Managor" id="74" weight="2" />
+      <edge source="msaf9" target="znarfm" id="75" weight="6" />
+      <edge source="msaf9" target="DustMerlin" id="76" weight="3" />
+      <edge source="dmmqz" target="znarfm" id="77" weight="20" />
+      <edge source="dmmqz" target="zhuhongboAAA" id="78" weight="8" />
+      <edge source="dmmqz" target="Managor" id="79" weight="59" />
+      <edge source="dmmqz" target="AttackThwarter" id="80" weight="12" />
+      <edge source="dmmqz" target="Seito1090" id="81" weight="40" />
+      <edge source="dmmqz" target="sri-sethu" id="82" weight="60" />
+      <edge source="dmmqz" target="tranzystorekk" id="83" weight="7" />
+      <edge source="dmmqz" target="kant" id="84" weight="15" />
+      <edge source="dmmqz" target="TheRootDaemon" id="85" weight="4" />
+      <edge source="kant" target="Managor" id="86" weight="8" />
+      <edge source="TheRootDaemon" target="sapbotgit" id="87" weight="2" />
+      <edge source="TheRootDaemon" target="AttackThwarter" id="88" weight="46" />
+      <edge source="TheRootDaemon" target="nelsonfigueroa" id="89" weight="4" />
+      <edge source="TheRootDaemon" target="Managor" id="90" weight="4" />
+      <edge source="TheRootDaemon" target="DustMerlin" id="91" weight="4" />
+      <edge source="FazleArefin" target="znarfm" id="92" weight="13" />
+      <edge source="FazleArefin" target="Managor" id="93" weight="16" />
+      <edge source="SethFalco" target="zhuhongboAAA" id="94" weight="6" />
+      <edge source="SethFalco" target="kbdharun" id="95" weight="4" />
+      <edge source="acuteenvy" target="Managor" id="96" weight="6" />
+      <edge source="acuteenvy" target="AttackThwarter" id="97" weight="6" />
+      <edge source="acuteenvy" target="Seito1090" id="98" weight="24" />
+      <edge source="leonvsc" target="dmmqz" id="99" weight="11" />
+      <edge source="KristopherLeads" target="kant" id="100" weight="7" />
+      <edge source="MrMw3" target="Managor" id="101" weight="4" />
+      <edge source="SpikeTheDragon40k" target="Managor" id="102" weight="4" />
+      <edge source="karthik-script" target="Managor" id="103" weight="4" />
+      <edge source="spageektti" target="tranzystorekk" id="104" weight="4" />
+      <edge source="einverne" target="DustMerlin" id="105" weight="4" />
+      <edge source="MachiavelliII" target="kant" id="106" weight="8" />
     </edges>
   </graph>
 </gexf>

@@ -7,7 +7,7 @@ class GraphAnalysis:
         self.graph = graph
 
     def compute_metrics(self) -> Dict[str, Any]:
-        """Calcula métricas do grafo com tratamento para grafo vazio."""
+        # Para grafo vazio.
         n = self.graph.number_of_nodes()
         m = self.graph.number_of_edges()
 
