@@ -4,7 +4,7 @@ from typing import Dict, List, Tuple
 from graph_lib.adjacency_list import AdjacencyListGraph
 from graph_lib.abstract_graph import AbstractGraph
 
-# Constantes de Peso (Etapa 1.2)
+# PESOS
 WEIGHT_COMMENT = 2.0
 WEIGHT_CLOSE   = 3.0
 WEIGHT_REVIEW  = 4.0
@@ -17,11 +17,9 @@ class GitHubMiner:
         self.headers    = {"Authorization": f"token {token}"} if token else {}
         self.base_url   = f"https://api.github.com/repos/{repo_owner}/{repo_name}"
         
-        # Mapeamento Login -> ID
         self.user_map: Dict[str, int] = {}
         self.next_id = 0
         
-        # Armazenamento de interações cruas: (source, target, type, weight)
         # Types: 'comment', 'close', 'review', 'merge'
         self.raw_interactions: List[Tuple[int, int, str, float]] = []
 
@@ -32,14 +30,10 @@ class GitHubMiner:
         return self.user_map[login]
 
     def _request(self, url: str, params: dict = None):
-        """
-        Faz requisições paginadas para a API do GitHub.
-        Garante que 'page' e 'per_page' sejam enviados em TODAS as páginas
-        junto com os demais parâmetros (por exemplo 'state': 'all').
-        """
+        
         data = []
         page = 1
-        max_pages = 3  # limite de segurança para demonstração
+        max_pages = 3  # Número máximo de páginas a buscar 
 
         print(f"Requisitando: {url}...")
         while page <= max_pages:
@@ -79,8 +73,6 @@ class GitHubMiner:
         """
         print(f"--- Iniciando Mineração em {self.repo_owner}/{self.repo_name} ---")
         
-        # 1. Buscar Issues e Pull Requests
-        # Aqui uso state: 'all' para garantir retorno de issues e PRs
         issues = self._request(f"{self.base_url}/issues", {"state": "all"})
         print(f"Total de issues retornadas: {len(issues)}")
 
@@ -93,14 +85,13 @@ class GitHubMiner:
             number        = item["number"]
             is_pr         = "pull_request" in item
             
-            # Tipo 2: fechamento de issue por outro usuário (Grafo 2)
             if (not is_pr) and item.get("state") == "closed" and item.get("closed_by"):
                 closer_login = item["closed_by"]["login"]
                 closer_id    = self._get_user_id(closer_login)
                 if closer_id != creator_id:
                     self.raw_interactions.append((closer_id, creator_id, "close", WEIGHT_CLOSE))
 
-            # Tipo 1: comentários em issues ou PRs (Grafo 1)
+            # Comentários em issues ou PRs
             if item.get("comments", 0) > 0:
                 comments_url = item["comments_url"]
                 comments = self._request(comments_url)
@@ -113,7 +104,7 @@ class GitHubMiner:
                     if comm_id != creator_id:
                         self.raw_interactions.append((comm_id, creator_id, "comment", WEIGHT_COMMENT))
 
-            # Tipo 3: reviews e merges em PRs (Grafo 3)
+            # Reviews e merges em PRs
             if is_pr:
                 # Reviews
                 reviews_url = f"{self.base_url}/pulls/{number}/reviews"
@@ -123,7 +114,6 @@ class GitHubMiner:
                         continue
                     reviewer_login = rev["user"]["login"]
                     reviewer_id    = self._get_user_id(reviewer_login)
-                    # poderíamos checar rev["state"], mas para o TP basta contar como review
                     if reviewer_id != creator_id:
                         self.raw_interactions.append((reviewer_id, creator_id, "review", WEIGHT_REVIEW))
 
@@ -148,18 +138,12 @@ class GitHubMiner:
                 print(inter)
 
     def _build_graph_from_interactions(self, interaction_types: List[str] = None) -> AbstractGraph:
-        """
-        Método genérico para construir grafo baseado em tipos de interação.
-        Se interaction_types for None, usa todos (grafo integrado).
-        """
         graph = AdjacencyListGraph(self.next_id)
         
-        # Configurar labels
         inv_map = {v: k for k, v in self.user_map.items()}
         for uid, login in inv_map.items():
             graph.set_vertex_label(uid, login)
             
-        # Soma pesos de arestas paralelas
         edge_weights: Dict[Tuple[int, int], float] = {}
         
         for u, v, type_, weight in self.raw_interactions:
@@ -170,7 +154,6 @@ class GitHubMiner:
                 edge_weights[(u, v)] = 0.0
             edge_weights[(u, v)] += weight
 
-        # Preencher grafo
         for (u, v), w in edge_weights.items():
             graph.addEdge(u, v)
             graph.setEdgeWeight(u, v, w)
@@ -187,5 +170,4 @@ class GitHubMiner:
         return self._build_graph_from_interactions(["review", "merge"])
 
     def get_integrated_graph(self) -> AbstractGraph:
-        # Usa todos os tipos
         return self._build_graph_from_interactions(None)

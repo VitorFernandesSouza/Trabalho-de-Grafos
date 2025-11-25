@@ -14,10 +14,11 @@ def print_top_metrics(metrics: dict, title: str, top_n=5):
         val = f"{v:.4f}" if isinstance(v, float) else v
         print(f"{k}: {val}")
 
+# Menuzin
 def main_menu():
     miner = None
-    integrated_graph = None
-    graphs = {} # Armazena os sub-grafos 1, 2, 3
+    grafo_integrado = None
+    grafo = {} 
 
     while True:
         print("\n" + "="*40)
@@ -51,34 +52,33 @@ def main_menu():
             if not miner or not miner.raw_interactions:
                 print("Nenhum dado minerado. Execute a opção 2 antes.")
                 continue
-            graphs['comments'] = miner.get_graph_1_comments()
-            graphs['closed'] = miner.get_graph_2_issues_closed()
-            graphs['reviews'] = miner.get_graph_3_reviews_merges()
+            grafo['comments'] = miner.get_graph_1_comments()
+            grafo['closed'] = miner.get_graph_2_issues_closed()
+            grafo['reviews'] = miner.get_graph_3_reviews_merges()
             
-            print(f"Grafo 1 (Comentários): {graphs['comments'].getVertexCount()} nós, {graphs['comments'].getEdgeCount()} arestas.")
-            print(f"Grafo 2 (Fechamentos): {graphs['closed'].getVertexCount()} nós, {graphs['closed'].getEdgeCount()} arestas.")
-            print(f"Grafo 3 (Reviews/Merges): {graphs['reviews'].getVertexCount()} nós, {graphs['reviews'].getEdgeCount()} arestas.")
+            print(f"Grafo 1 (Comentários): {grafo['comments'].getVertexCount()} nós, {grafo['comments'].getEdgeCount()} arestas.")
+            print(f"Grafo 2 (Fechamentos): {grafo['closed'].getVertexCount()} nós, {grafo['closed'].getEdgeCount()} arestas.")
+            print(f"Grafo 3 (Reviews/Merges): {grafo['reviews'].getVertexCount()} nós, {grafo['reviews'].getEdgeCount()} arestas.")
             input("Pressione Enter...")
 
         elif opt == '4':
             if not miner or not miner.raw_interactions:
                 print("Sem dados.")
                 continue
-            integrated_graph = miner.get_integrated_graph()
+            grafo_integrado = miner.get_grafo_integrado()
             print(f"Grafo Integrado construído!")
-            print(f"Nós: {integrated_graph.getVertexCount()}")
-            print(f"Arestas: {integrated_graph.getEdgeCount()}")
+            print(f"Nós: {grafo_integrado.getVertexCount()}")
+            print(f"Arestas: {grafo_integrado.getEdgeCount()}")
             input("Pressione Enter...")
 
         elif opt == '5':
-            if not integrated_graph:
+            if not grafo_integrado:
                 print("Construa o grafo integrado primeiro (Opção 4).")
                 continue
             
-            g = integrated_graph
+            g = grafo_integrado
             print("\nCALCULANDO MÉTRICAS...")
             
-            # Estrutura
             dens = GraphAnalyzer.density(g)
             clust = GraphAnalyzer.clustering_coefficient(g)
             assort = GraphAnalyzer.assortativity(g)
@@ -87,7 +87,6 @@ def main_menu():
             print(f"> Coeficiente de Aglomeração (Global): {clust:.5f}")
             print(f"> Assortatividade: {assort:.5f}")
             
-            # Centralidades
             print("\n> Calculando PageRank...")
             pr = GraphAnalyzer.pagerank(g)
             print_top_metrics(pr, "PageRank")
@@ -101,11 +100,9 @@ def main_menu():
             print_top_metrics(cl, "Closeness Centrality")
             
             deg = GraphAnalyzer.degree_centrality(g)
-            # Ordenar por grau de saída (quem mais interage)
             out_deg = {k: v[1] for k, v in deg.items()}
             print_top_metrics(out_deg, "Out-Degree (Mais Ativos)")
             
-            # Comunidades
             print("\n> Detectando Comunidades...")
             comm = GraphAnalyzer.detect_communities_label_propagation(g)
             num_comm = len(set(comm.values()))
@@ -119,8 +116,8 @@ def main_menu():
             input("\nPressione Enter para voltar...")
 
         elif opt == '6':
-            if integrated_graph:
-                integrated_graph.exportToGEPHI("integrated_graph")
+            if grafo_integrado:
+                grafo_integrado.exportToGEPHI("grafo_integrado")
                 print("Arquivos CSV gerados.")
             else:
                 print("Grafo não existe.")

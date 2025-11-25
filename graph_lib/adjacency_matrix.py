@@ -4,7 +4,6 @@ from .abstract_graph import AbstractGraph
 class AdjacencyMatrixGraph(AbstractGraph):
     def __init__(self, numVertices: int):
         super().__init__(numVertices)
-        # Matriz: None indica sem aresta
         self._matrix: List[List[Optional[float]]] = [[None] * numVertices for _ in range(numVertices)]
         self._edge_count = 0
 

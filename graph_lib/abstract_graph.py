@@ -3,15 +3,9 @@ import csv
 from typing import List, Dict
 
 class AbstractGraph(abc.ABC):
-    """
-    Classe abstrata que define a API comum para manipulação de grafos.
-    Define o contrato base exigido pelo trabalho.
-    """
     def __init__(self, num_vertices: int):
         self.num_vertices = num_vertices
-        # Mapeamento de pesos dos vértices: índice -> peso
         self._vertex_weights: Dict[int, float] = {i: 1.0 for i in range(num_vertices)}
-        # Labels opcionais (ex: login do usuário)
         self._vertex_labels: Dict[int, str] = {i: f"Node_{i}" for i in range(num_vertices)}
 
     def set_vertex_label(self, v: int, label: str):
@@ -26,8 +20,6 @@ class AbstractGraph(abc.ABC):
         for idx in indices:
             if idx < 0 or idx >= self.num_vertices:
                 raise IndexError(f"Índice {idx} inválido. Esperado entre 0 e {self.num_vertices - 1}.")
-
-    # --- API Obrigatória (Conforme PDF) ---
 
     @abc.abstractmethod
     def getVertexCount(self) -> int: pass
@@ -53,7 +45,7 @@ class AbstractGraph(abc.ABC):
     @abc.abstractmethod
     def getNeighbors(self, u: int) -> List[int]: pass
 
-    # --- Métodos Concretos (Lógica Compartilhada) ---
+    # Métodos Concretos
 
     def isSucessor(self, u: int, v: int) -> bool:
         return self.hasEdge(u, v)
@@ -107,12 +99,10 @@ class AbstractGraph(abc.ABC):
         
         while queue:
             curr = queue.pop(0)
-            # Vizinhos saindo
             for neighbor in self.getNeighbors(curr):
                 if neighbor not in visited:
                     visited.add(neighbor)
                     queue.append(neighbor)
-            # Vizinhos entrando (para conectividade fraca)
             for i in range(self.num_vertices):
                 if i not in visited and self.hasEdge(i, curr):
                     visited.add(i)
