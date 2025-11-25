@@ -1,8 +1,0 @@
-requests
-networkx
-pandas
-matplotlib
-python-louvain
-tqdm
-python-dotenv
-scipy
