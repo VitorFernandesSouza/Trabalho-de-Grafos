@@ -1,5 +1,8 @@
 import requests
 import time
+import json
+import os
+from datetime import datetime
 from typing import Dict, List, Tuple
 from graph_lib.adjacency_list import AdjacencyListGraph
 from graph_lib.abstract_graph import AbstractGraph
@@ -136,6 +139,10 @@ class GitHubMiner:
             print("Primeiras 5 interações:")
             for inter in self.raw_interactions[:5]:
                 print(inter)
+            
+            # Salvamento automático após mineração bem-sucedida
+            print("\nSalvando dados automaticamente...")
+            self.save_data_to_json()
 
     def _build_graph_from_interactions(self, interaction_types: List[str] = None) -> AbstractGraph:
         graph = AdjacencyListGraph(self.next_id)
@@ -169,5 +176,145 @@ class GitHubMiner:
     def get_graph_3_reviews_merges(self) -> AbstractGraph:
         return self._build_graph_from_interactions(["review", "merge"])
 
-    def get_integrated_graph(self) -> AbstractGraph:
+    def get_grafo_integrado(self) -> AbstractGraph:
         return self._build_graph_from_interactions(None)
+
+    def save_data_to_json(self, filename: str = None):
+        """
+        Salva os dados minerados em um arquivo JSON para reutilização posterior.
+        """
+        if filename is None:
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            filename = f"github_data_{self.repo_owner}_{self.repo_name}_{timestamp}.json"
+        
+        data_to_save = {
+            "repo_owner": self.repo_owner,
+            "repo_name": self.repo_name,
+            "timestamp": datetime.now().isoformat(),
+            "user_map": self.user_map,
+            "next_id": self.next_id,
+            "raw_interactions": self.raw_interactions
+        }
+        
+        try:
+            with open(filename, 'w', encoding='utf-8') as f:
+                json.dump(data_to_save, f, indent=2, ensure_ascii=False)
+            print(f"Dados salvos em: {filename}")
+            return filename
+        except Exception as e:
+            print(f"Erro ao salvar dados: {e}")
+            return None
+
+    def load_data_from_json(self, filename: str) -> bool:
+        """
+        Carrega dados previamente minerados de um arquivo JSON.
+        Retorna True se carregado com sucesso, False caso contrário.
+        """
+        try:
+            if not os.path.exists(filename):
+                print(f"Arquivo não encontrado: {filename}")
+                return False
+            
+            with open(filename, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            # Verificar se é o mesmo repositório
+            if (data.get("repo_owner") != self.repo_owner or 
+                data.get("repo_name") != self.repo_name):
+                print(f"Aviso: Dados são de um repositório diferente!")
+                print(f"Arquivo: {data.get('repo_owner')}/{data.get('repo_name')}")
+                print(f"Atual: {self.repo_owner}/{self.repo_name}")
+                response = input("Deseja carregar mesmo assim? (s/n): ")
+                if response.lower() != 's':
+                    return False
+            
+            # Carregar os dados
+            self.user_map = data.get("user_map", {})
+            self.next_id = data.get("next_id", 0)
+            self.raw_interactions = data.get("raw_interactions", [])
+            
+            print(f"Dados carregados com sucesso!")
+            print(f"Timestamp do arquivo: {data.get('timestamp', 'N/A')}")
+            print(f"Total de interações: {len(self.raw_interactions)}")
+            print(f"Total de usuários: {len(self.user_map)}")
+            
+            return True
+            
+        except Exception as e:
+            print(f"Erro ao carregar dados: {e}")
+            return False
+
+    def list_saved_files(self) -> List[str]:
+        """
+        Lista arquivos JSON salvos no diretório atual que correspondem ao padrão de nomenclatura.
+        """
+        pattern = f"github_data_{self.repo_owner}_{self.repo_name}"
+        files = []
+        
+        try:
+            for filename in os.listdir('.'):
+                if filename.startswith(pattern) and filename.endswith('.json'):
+                    files.append(filename)
+            files.sort(reverse=True)  # Mais recentes primeiro
+        except Exception as e:
+            print(f"Erro ao listar arquivos: {e}")
+        
+        return files
+
+    @staticmethod
+    def save_config(repo_owner: str, repo_name: str, token: str = None):
+        """
+        Salva a configuração (repositório e token) em um arquivo.
+        """
+        config_data = {
+            "repo_owner": repo_owner,
+            "repo_name": repo_name,
+            "token": token,
+            "last_updated": datetime.now().isoformat()
+        }
+        
+        try:
+            with open("github_config.json", 'w', encoding='utf-8') as f:
+                json.dump(config_data, f, indent=2, ensure_ascii=False)
+            print("Configuração salva em github_config.json")
+            return True
+        except Exception as e:
+            print(f"Erro ao salvar configuração: {e}")
+            return False
+
+    @staticmethod
+    def load_config():
+        """
+        Carrega a configuração salva do arquivo.
+        Retorna um dicionário com os dados ou None se não existir/erro.
+        """
+        try:
+            if not os.path.exists("github_config.json"):
+                return None
+                
+            with open("github_config.json", 'r', encoding='utf-8') as f:
+                config = json.load(f)
+            
+            # Validar campos obrigatórios
+            if not config.get("repo_owner") or not config.get("repo_name"):
+                print("Arquivo de configuração inválido.")
+                return None
+                
+            return config
+        except Exception as e:
+            print(f"Erro ao carregar configuração: {e}")
+            return None
+
+    @staticmethod
+    def create_from_config():
+        """
+        Cria uma instância do GitHubMiner a partir da configuração salva.
+        """
+        config = GitHubMiner.load_config()
+        if config:
+            return GitHubMiner(
+                config["repo_owner"], 
+                config["repo_name"], 
+                config.get("token")
+            )
+        return None
