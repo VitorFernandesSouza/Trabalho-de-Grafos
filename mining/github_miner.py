@@ -37,7 +37,7 @@ class GitHubMiner:
         
         data = []
         page = 1
-        max_pages = 3
+        max_pages = 10
 
         print(f"Requisitando: {url}...")
         while page <= max_pages:

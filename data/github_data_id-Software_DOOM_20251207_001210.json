@@ -1,0 +1,493 @@
+{
+  "repo_owner": "id-Software",
+  "repo_name": "DOOM",
+  "timestamp": "2025-12-07T00:12:10.553102",
+  "user_map": {
+    "manuelaidos123": 0,
+    "sapbotgit": 1,
+    "ghost": 2,
+    "kenan238": 3,
+    "expected-ingot": 4,
+    "cacheninetynine": 5,
+    "bcsanches": 6,
+    "mingusmingus": 7,
+    "kraftpunk97": 8,
+    "limitedAtonement": 9,
+    "pizzatowermobile": 10,
+    "idiotforge": 11,
+    "DistractionCat": 12,
+    "Dawideusz": 13,
+    "Buggem": 14,
+    "AWilliams17": 15,
+    "ScalarJerk": 16,
+    "felipecastilhos": 17,
+    "Royvdelft": 18,
+    "WGrav01": 19,
+    "Sergey5588": 20,
+    "nihirunoherr": 21,
+    "wener-tiobe": 22,
+    "AlanMascorro": 23,
+    "x64x2": 24,
+    "RoboSchmied": 25,
+    "jonetu": 26,
+    "theodesp": 27,
+    "gustavosett": 28,
+    "joaopchaves": 29,
+    "andrewhoyer": 30,
+    "malcolmstill": 31,
+    "lunkums": 32,
+    "xierongchuan": 33,
+    "johnsjob": 34,
+    "GalichCZ": 35,
+    "GhostOfPoros": 36,
+    "MrLuckyKing": 37,
+    "seandockery": 38,
+    "SeryiBaran": 39,
+    "Anonyymi": 40,
+    "orowith2os": 41,
+    "JDJGInc": 42,
+    "peter-dolkens": 43,
+    "Reycko": 44,
+    "krovellium": 45,
+    "Midway64": 46,
+    "BBQGiraffe": 47,
+    "OakleyCord": 48,
+    "xeome": 49,
+    "daraul": 50,
+    "philip-dale": 51,
+    "jimbo8098": 52,
+    "Jihad85-D": 53,
+    "patrickBerry": 54,
+    "dantidwell": 55,
+    "violetastcs": 56,
+    "nmssilva": 57,
+    "rsiemens": 58,
+    "weskerfoot": 59,
+    "lbertolotti": 60,
+    "elmazzun": 61,
+    "GreatAttractor": 62,
+    "lihe07": 63,
+    "LinuxDevloper3D": 64,
+    "ptran099": 65,
+    "monoastro": 66,
+    "sanilrocks": 67,
+    "Spaceghost": 68
+  },
+  "next_id": 69,
+  "raw_interactions": [
+    [
+      4,
+      3,
+      "comment",
+      2.0
+    ],
+    [
+      5,
+      3,
+      "comment",
+      2.0
+    ],
+    [
+      6,
+      3,
+      "comment",
+      2.0
+    ],
+    [
+      7,
+      3,
+      "comment",
+      2.0
+    ],
+    [
+      8,
+      3,
+      "comment",
+      2.0
+    ],
+    [
+      9,
+      3,
+      "comment",
+      2.0
+    ],
+    [
+      10,
+      3,
+      "comment",
+      2.0
+    ],
+    [
+      11,
+      3,
+      "comment",
+      2.0
+    ],
+    [
+      12,
+      3,
+      "comment",
+      2.0
+    ],
+    [
+      13,
+      3,
+      "comment",
+      2.0
+    ],
+    [
+      14,
+      3,
+      "comment",
+      2.0
+    ],
+    [
+      15,
+      3,
+      "comment",
+      2.0
+    ],
+    [
+      1,
+      3,
+      "review",
+      4.0
+    ],
+    [
+      16,
+      3,
+      "review",
+      4.0
+    ],
+    [
+      17,
+      3,
+      "review",
+      4.0
+    ],
+    [
+      18,
+      3,
+      "review",
+      4.0
+    ],
+    [
+      19,
+      3,
+      "review",
+      4.0
+    ],
+    [
+      20,
+      3,
+      "review",
+      4.0
+    ],
+    [
+      14,
+      23,
+      "comment",
+      2.0
+    ],
+    [
+      24,
+      23,
+      "review",
+      4.0
+    ],
+    [
+      6,
+      25,
+      "comment",
+      2.0
+    ],
+    [
+      7,
+      25,
+      "comment",
+      2.0
+    ],
+    [
+      26,
+      25,
+      "comment",
+      2.0
+    ],
+    [
+      27,
+      25,
+      "comment",
+      2.0
+    ],
+    [
+      28,
+      25,
+      "comment",
+      2.0
+    ],
+    [
+      29,
+      25,
+      "review",
+      4.0
+    ],
+    [
+      24,
+      31,
+      "comment",
+      2.0
+    ],
+    [
+      24,
+      32,
+      "comment",
+      2.0
+    ],
+    [
+      33,
+      32,
+      "comment",
+      2.0
+    ],
+    [
+      34,
+      32,
+      "comment",
+      2.0
+    ],
+    [
+      35,
+      32,
+      "review",
+      4.0
+    ],
+    [
+      37,
+      36,
+      "comment",
+      2.0
+    ],
+    [
+      39,
+      38,
+      "comment",
+      2.0
+    ],
+    [
+      24,
+      38,
+      "review",
+      4.0
+    ],
+    [
+      24,
+      38,
+      "review",
+      4.0
+    ],
+    [
+      42,
+      41,
+      "comment",
+      2.0
+    ],
+    [
+      43,
+      41,
+      "comment",
+      2.0
+    ],
+    [
+      44,
+      41,
+      "comment",
+      2.0
+    ],
+    [
+      45,
+      41,
+      "comment",
+      2.0
+    ],
+    [
+      46,
+      41,
+      "comment",
+      2.0
+    ],
+    [
+      34,
+      41,
+      "comment",
+      2.0
+    ],
+    [
+      14,
+      41,
+      "comment",
+      2.0
+    ],
+    [
+      34,
+      41,
+      "review",
+      4.0
+    ],
+    [
+      34,
+      41,
+      "review",
+      4.0
+    ],
+    [
+      2,
+      48,
+      "comment",
+      2.0
+    ],
+    [
+      49,
+      48,
+      "comment",
+      2.0
+    ],
+    [
+      50,
+      48,
+      "comment",
+      2.0
+    ],
+    [
+      45,
+      48,
+      "comment",
+      2.0
+    ],
+    [
+      43,
+      48,
+      "comment",
+      2.0
+    ],
+    [
+      53,
+      52,
+      "review",
+      4.0
+    ],
+    [
+      24,
+      52,
+      "review",
+      4.0
+    ],
+    [
+      57,
+      56,
+      "review",
+      4.0
+    ],
+    [
+      60,
+      59,
+      "comment",
+      2.0
+    ],
+    [
+      60,
+      59,
+      "comment",
+      2.0
+    ],
+    [
+      60,
+      59,
+      "comment",
+      2.0
+    ],
+    [
+      60,
+      59,
+      "comment",
+      2.0
+    ],
+    [
+      60,
+      59,
+      "comment",
+      2.0
+    ],
+    [
+      61,
+      59,
+      "comment",
+      2.0
+    ],
+    [
+      2,
+      59,
+      "comment",
+      2.0
+    ],
+    [
+      62,
+      59,
+      "comment",
+      2.0
+    ],
+    [
+      60,
+      59,
+      "comment",
+      2.0
+    ],
+    [
+      63,
+      59,
+      "comment",
+      2.0
+    ],
+    [
+      64,
+      59,
+      "comment",
+      2.0
+    ],
+    [
+      65,
+      59,
+      "comment",
+      2.0
+    ],
+    [
+      66,
+      59,
+      "review",
+      4.0
+    ],
+    [
+      24,
+      59,
+      "review",
+      4.0
+    ],
+    [
+      63,
+      59,
+      "review",
+      4.0
+    ],
+    [
+      68,
+      67,
+      "comment",
+      2.0
+    ],
+    [
+      2,
+      67,
+      "comment",
+      2.0
+    ]
+  ]
+}
