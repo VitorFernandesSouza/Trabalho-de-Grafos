@@ -1,5 +1,8 @@
 import abc
 import csv
+import os
+import xml.etree.ElementTree as ET
+from xml.dom import minidom
 from typing import List, Dict
 
 class AbstractGraph(abc.ABC):
@@ -20,6 +23,10 @@ class AbstractGraph(abc.ABC):
         for idx in indices:
             if idx < 0 or idx >= self.num_vertices:
                 raise IndexError(f"Índice {idx} inválido. Esperado entre 0 e {self.num_vertices - 1}.")
+    
+    def _ensure_data_dir(self):
+        if not os.path.exists("data"):
+            os.makedirs("data")
 
     @abc.abstractmethod
     def getVertexCount(self) -> int: pass
@@ -50,7 +57,7 @@ class AbstractGraph(abc.ABC):
     def isSucessor(self, u: int, v: int) -> bool:
         return self.hasEdge(u, v)
 
-    def isPredessor(self, u: int, v: int) -> bool:
+    def isPredecessor(self, u: int, v: int) -> bool:
         return self.hasEdge(v, u)
 
     def isDivergent(self, u1: int, v1: int, u2: int, v2: int) -> bool:
@@ -116,9 +123,14 @@ class AbstractGraph(abc.ABC):
         n = self.getVertexCount()
         return self.getEdgeCount() == n * (n - 1)
 
-    def exportToGEPHI(self, path: str):
-        nodes_path = path.replace(".csv", "_nodes.csv") if ".csv" in path else path + "_nodes.csv"
-        edges_path = path.replace(".csv", "_edges.csv") if ".csv" in path else path + "_edges.csv"
+    def exportToGEPHI(self, filename: str):
+        self._ensure_data_dir()
+        
+        clean_name = filename.replace(".csv", "")
+        
+        nodes_path = os.path.join("data", f"{clean_name}_nodes.csv")
+        edges_path = os.path.join("data", f"{clean_name}_edges.csv")
+        
         try:
             with open(nodes_path, mode='w', newline='', encoding='utf-8') as f:
                 writer = csv.writer(f)
@@ -132,6 +144,61 @@ class AbstractGraph(abc.ABC):
                 for u in range(self.num_vertices):
                     for v in self.getNeighbors(u):
                         writer.writerow([u, v, self.getEdgeWeight(u, v), "Directed"])
-            print(f"Exportado: {nodes_path}, {edges_path}")
+            print(f"Exportado para CSV: {nodes_path}, {edges_path}")
         except IOError as e:
-            print(f"Erro ao exportar: {e}")
+            print(f"Erro ao exportar CSV: {e}")
+
+    def exportToGEXF(self, filename: str):
+        self._ensure_data_dir()
+        
+        if not filename.endswith(".gexf"):
+            filename += ".gexf"
+            
+        filepath = os.path.join("data", filename)
+        
+        # Estrutura básica do GEXF
+        gexf = ET.Element('gexf', {
+            'xmlns': 'http://www.gexf.net/1.2draft',
+            'version': '1.2'
+        })
+        
+        meta = ET.SubElement(gexf, 'meta', {'lastmodifieddate': '2023-10-01'})
+        creator = ET.SubElement(meta, 'creator')
+        creator.text = 'GitHubMiner Tool'
+        
+        graph_elem = ET.SubElement(gexf, 'graph', {
+            'mode': 'static', 
+            'defaultedgetype': 'directed'
+        })
+        
+        nodes_elem = ET.SubElement(graph_elem, 'nodes')
+        for i in range(self.num_vertices):
+            node = ET.SubElement(nodes_elem, 'node', {
+                'id': str(i),
+                'label': self.get_vertex_label(i)
+            })
+        
+        edges_elem = ET.SubElement(graph_elem, 'edges')
+        edge_id = 0
+        for u in range(self.num_vertices):
+            for v in self.getNeighbors(u):
+                weight = self.getEdgeWeight(u, v)
+                ET.SubElement(edges_elem, 'edge', {
+                    'id': str(edge_id),
+                    'source': str(u),
+                    'target': str(v),
+                    'weight': str(weight)
+                })
+                edge_id += 1
+                
+        try:
+            raw_string = ET.tostring(gexf, 'utf-8')
+            parsed = minidom.parseString(raw_string)
+            pretty_xml = parsed.toprettyxml(indent="  ")
+            
+            with open(filepath, 'w', encoding='utf-8') as f:
+                f.write(pretty_xml)
+                
+            print(f"Exportado para GEXF: {filepath}")
+        except Exception as e:
+            print(f"Erro ao exportar GEXF: {e}")
