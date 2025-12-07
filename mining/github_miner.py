@@ -13,6 +13,8 @@ WEIGHT_CLOSE   = 3.0
 WEIGHT_REVIEW  = 4.0
 WEIGHT_MERGE   = 5.0
 
+DATA_DIR = "data"
+
 class GitHubMiner:
     def __init__(self, repo_owner: str, repo_name: str, token: str = None):
         self.repo_owner = repo_owner
@@ -23,7 +25,6 @@ class GitHubMiner:
         self.user_map: Dict[str, int] = {}
         self.next_id = 0
         
-        # Types: 'comment', 'close', 'review', 'merge'
         self.raw_interactions: List[Tuple[int, int, str, float]] = []
 
     def _get_user_id(self, login: str) -> int:
@@ -36,7 +37,7 @@ class GitHubMiner:
         
         data = []
         page = 1
-        max_pages = 3  # Número máximo de páginas a buscar 
+        max_pages = 70
 
         print(f"Requisitando: {url}...")
         while page <= max_pages:
@@ -58,12 +59,18 @@ class GitHubMiner:
                     break
 
                 page_data = resp.json()
+                
+                if isinstance(page_data, dict):
+                    if page_data.get('message'):
+                        print(f"Mensagem da API: {page_data['message']}")
+                    break
+                
                 if not page_data:
                     break
 
                 data.extend(page_data)
                 page += 1
-                time.sleep(0.5)  # gentileza com a API
+                time.sleep(0.5)
             except Exception as e:
                 print(f"Erro de conexão: {e}")
                 break
@@ -71,9 +78,7 @@ class GitHubMiner:
         return data
 
     def mine_data(self):
-        """
-        Realiza a mineração completa: Issues, Comments, Pull Requests, Reviews.
-        """
+       
         print(f"--- Iniciando Mineração em {self.repo_owner}/{self.repo_name} ---")
         
         issues = self._request(f"{self.base_url}/issues", {"state": "all"})
@@ -94,7 +99,6 @@ class GitHubMiner:
                 if closer_id != creator_id:
                     self.raw_interactions.append((closer_id, creator_id, "close", WEIGHT_CLOSE))
 
-            # Comentários em issues ou PRs
             if item.get("comments", 0) > 0:
                 comments_url = item["comments_url"]
                 comments = self._request(comments_url)
@@ -107,9 +111,7 @@ class GitHubMiner:
                     if comm_id != creator_id:
                         self.raw_interactions.append((comm_id, creator_id, "comment", WEIGHT_COMMENT))
 
-            # Reviews e merges em PRs
             if is_pr:
-                # Reviews
                 reviews_url = f"{self.base_url}/pulls/{number}/reviews"
                 reviews = self._request(reviews_url)
                 for rev in reviews:
@@ -120,10 +122,8 @@ class GitHubMiner:
                     if reviewer_id != creator_id:
                         self.raw_interactions.append((reviewer_id, creator_id, "review", WEIGHT_REVIEW))
 
-                # Merge
                 try:
                     pr_resp = requests.get(f"{self.base_url}/pulls/{number}", headers=self.headers)
-                    print(f"GET {pr_resp.url} -> status {pr_resp.status_code}")
                     if pr_resp.status_code == 200:
                         pr_data = pr_resp.json()
                         if pr_data.get("merged_by"):
@@ -135,12 +135,8 @@ class GitHubMiner:
                     print(f"Erro ao buscar detalhe do PR {number}: {e}")
 
         print(f"Mineração concluída. Total de interações capturadas: {len(self.raw_interactions)}")
+        
         if self.raw_interactions:
-            print("Primeiras 5 interações:")
-            for inter in self.raw_interactions[:5]:
-                print(inter)
-            
-            # Salvamento automático após mineração bem-sucedida
             print("\nSalvando dados automaticamente...")
             self.save_data_to_json()
 
@@ -180,12 +176,15 @@ class GitHubMiner:
         return self._build_graph_from_interactions(None)
 
     def save_data_to_json(self, filename: str = None):
-        """
-        Salva os dados minerados em um arquivo JSON para reutilização posterior.
-        """
+        
+        if not os.path.exists(DATA_DIR):
+            os.makedirs(DATA_DIR)
+
         if filename is None:
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             filename = f"github_data_{self.repo_owner}_{self.repo_name}_{timestamp}.json"
+        
+        filepath = os.path.join(DATA_DIR, filename)
         
         data_to_save = {
             "repo_owner": self.repo_owner,
@@ -197,28 +196,26 @@ class GitHubMiner:
         }
         
         try:
-            with open(filename, 'w', encoding='utf-8') as f:
+            with open(filepath, 'w', encoding='utf-8') as f:
                 json.dump(data_to_save, f, indent=2, ensure_ascii=False)
-            print(f"Dados salvos em: {filename}")
-            return filename
+            print(f"Dados salvos em: {filepath}")
+            return filepath
         except Exception as e:
             print(f"Erro ao salvar dados: {e}")
             return None
 
     def load_data_from_json(self, filename: str) -> bool:
-        """
-        Carrega dados previamente minerados de um arquivo JSON.
-        Retorna True se carregado com sucesso, False caso contrário.
-        """
+        
+        filepath = os.path.join(DATA_DIR, filename)
+        
         try:
-            if not os.path.exists(filename):
-                print(f"Arquivo não encontrado: {filename}")
+            if not os.path.exists(filepath):
+                print(f"Arquivo não encontrado: {filepath}")
                 return False
             
-            with open(filename, 'r', encoding='utf-8') as f:
+            with open(filepath, 'r', encoding='utf-8') as f:
                 data = json.load(f)
             
-            # Verificar se é o mesmo repositório
             if (data.get("repo_owner") != self.repo_owner or 
                 data.get("repo_name") != self.repo_name):
                 print(f"Aviso: Dados são de um repositório diferente!")
@@ -228,15 +225,15 @@ class GitHubMiner:
                 if response.lower() != 's':
                     return False
             
-            # Carregar os dados
             self.user_map = data.get("user_map", {})
             self.next_id = data.get("next_id", 0)
             self.raw_interactions = data.get("raw_interactions", [])
             
+            self.raw_interactions = [tuple(x) for x in self.raw_interactions]
+            
             print(f"Dados carregados com sucesso!")
             print(f"Timestamp do arquivo: {data.get('timestamp', 'N/A')}")
             print(f"Total de interações: {len(self.raw_interactions)}")
-            print(f"Total de usuários: {len(self.user_map)}")
             
             return True
             
@@ -245,17 +242,18 @@ class GitHubMiner:
             return False
 
     def list_saved_files(self) -> List[str]:
-        """
-        Lista arquivos JSON salvos no diretório atual que correspondem ao padrão de nomenclatura.
-        """
+       
+        if not os.path.exists(DATA_DIR):
+            return []
+
         pattern = f"github_data_{self.repo_owner}_{self.repo_name}"
         files = []
         
         try:
-            for filename in os.listdir('.'):
+            for filename in os.listdir(DATA_DIR):
                 if filename.startswith(pattern) and filename.endswith('.json'):
                     files.append(filename)
-            files.sort(reverse=True)  # Mais recentes primeiro
+            files.sort(reverse=True)
         except Exception as e:
             print(f"Erro ao listar arquivos: {e}")
         
@@ -263,9 +261,6 @@ class GitHubMiner:
 
     @staticmethod
     def save_config(repo_owner: str, repo_name: str, token: str = None):
-        """
-        Salva a configuração (repositório e token) em um arquivo.
-        """
         config_data = {
             "repo_owner": repo_owner,
             "repo_name": repo_name,
@@ -284,22 +279,12 @@ class GitHubMiner:
 
     @staticmethod
     def load_config():
-        """
-        Carrega a configuração salva do arquivo.
-        Retorna um dicionário com os dados ou None se não existir/erro.
-        """
         try:
             if not os.path.exists("github_config.json"):
                 return None
                 
             with open("github_config.json", 'r', encoding='utf-8') as f:
                 config = json.load(f)
-            
-            # Validar campos obrigatórios
-            if not config.get("repo_owner") or not config.get("repo_name"):
-                print("Arquivo de configuração inválido.")
-                return None
-                
             return config
         except Exception as e:
             print(f"Erro ao carregar configuração: {e}")
@@ -307,9 +292,6 @@ class GitHubMiner:
 
     @staticmethod
     def create_from_config():
-        """
-        Cria uma instância do GitHubMiner a partir da configuração salva.
-        """
         config = GitHubMiner.load_config()
         if config:
             return GitHubMiner(
