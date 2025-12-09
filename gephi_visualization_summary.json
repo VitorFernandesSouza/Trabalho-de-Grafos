@@ -1,0 +1,132 @@
+{
+  "top_indegree": [
+    "icyJoseph",
+    "devjiwonchoi",
+    "mischnic",
+    "ijjk",
+    "huozhi",
+    "lukesandberg",
+    "eps1lon",
+    "ztanner",
+    "unstubbable",
+    "timneutkens"
+  ],
+  "top_pagerank": [
+    "icyJoseph",
+    "carlos-dubon",
+    "jperezr21",
+    "peabnuts123",
+    "edoko",
+    "devjiwonchoi",
+    "CHC383",
+    "sattarrasouli",
+    "congthanh1910",
+    "TrevorBurnham"
+  ],
+  "top_closeness": [
+    "github-actions[bot]",
+    "ijjk",
+    "icyJoseph",
+    "vercel[bot]",
+    "changeset-bot[bot]",
+    "codspeed-hq[bot]",
+    "eps1lon",
+    "ztanner",
+    "huozhi",
+    "graphite-app[bot]"
+  ],
+  "top_bridges": [
+    "github-actions[bot]",
+    "icyJoseph",
+    "ztanner",
+    "timneutkens",
+    "ijjk"
+  ],
+  "top_communities": [
+    {
+      "community_id": 37,
+      "rank": 1,
+      "size": 598,
+      "sample_members": [
+        "ijjk",
+        "agadzik",
+        "davbrito",
+        "maxscn",
+        "aymericzip",
+        "adamsoderstrom",
+        "vercel[bot]",
+        "graphite-app[bot]",
+        "comxd",
+        "styfle"
+      ]
+    },
+    {
+      "community_id": 16,
+      "rank": 2,
+      "size": 444,
+      "sample_members": [
+        "github-actions[bot]",
+        "fecommunity",
+        "epaynter",
+        "dandaniel5",
+        "ryota-murakami",
+        "ehsanghaffar",
+        "funnelfiasco",
+        "rRakarare",
+        "AryanVBW",
+        "molebox"
+      ]
+    },
+    {
+      "community_id": 38,
+      "rank": 3,
+      "size": 412,
+      "sample_members": [
+        "ztanner",
+        "nextjs-bot",
+        "huozhi",
+        "takusan23",
+        "wbinnssmith",
+        "lukesandberg",
+        "harikapadia999",
+        "unstubbable",
+        "acdlite",
+        "codspeed-hq[bot]"
+      ]
+    },
+    {
+      "community_id": 5,
+      "rank": 4,
+      "size": 226,
+      "sample_members": [
+        "altendky",
+        "icyJoseph",
+        "jonaseriksson84",
+        "01026551290",
+        "shiqocred",
+        "Ochirsaikhan",
+        "Linuhusainnk",
+        "Typhon0130",
+        "Musar98",
+        "DeveloperViraj"
+      ]
+    },
+    {
+      "community_id": 300,
+      "rank": 5,
+      "size": 19,
+      "sample_members": [
+        "columk1",
+        "CHC383",
+        "abhijit945",
+        "lesliechueng1996",
+        "matbour",
+        "jmanywhere",
+        "iamleniac",
+        "giovanni-depalma",
+        "daviseford",
+        "wslp12"
+      ]
+    }
+  ]
+}

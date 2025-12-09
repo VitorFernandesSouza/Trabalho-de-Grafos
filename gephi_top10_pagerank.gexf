@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2025-12-09">
+    <creator>NetworkX 3.4.2</creator>
+  </meta>
+  <graph defaultedgetype="directed" mode="static" name="">
+    <attributes mode="static" class="node">
+      <attribute id="0" title="pagerank" type="double" />
+    </attributes>
+    <nodes>
+      <node id="icyJoseph" label="icyJoseph">
+        <attvalues>
+          <attvalue for="0" value="0.010914498917324133" />
+        </attvalues>
+      </node>
+      <node id="carlos-dubon" label="carlos-dubon">
+        <attvalues>
+          <attvalue for="0" value="0.010014858314548717" />
+        </attvalues>
+      </node>
+      <node id="jperezr21" label="jperezr21">
+        <attvalues>
+          <attvalue for="0" value="0.009772442738727955" />
+        </attvalues>
+      </node>
+      <node id="peabnuts123" label="peabnuts123">
+        <attvalues>
+          <attvalue for="0" value="0.005632499588832929" />
+        </attvalues>
+      </node>
+      <node id="edoko" label="edoko">
+        <attvalues>
+          <attvalue for="0" value="0.005239364365140484" />
+        </attvalues>
+      </node>
+      <node id="devjiwonchoi" label="devjiwonchoi">
+        <attvalues>
+          <attvalue for="0" value="0.005021192722075085" />
+        </attvalues>
+      </node>
+      <node id="CHC383" label="CHC383">
+        <attvalues>
+          <attvalue for="0" value="0.004618897711447329" />
+        </attvalues>
+      </node>
+      <node id="sattarrasouli" label="sattarrasouli">
+        <attvalues>
+          <attvalue for="0" value="0.00439530567033519" />
+        </attvalues>
+      </node>
+      <node id="congthanh1910" label="congthanh1910">
+        <attvalues>
+          <attvalue for="0" value="0.004304905746461071" />
+        </attvalues>
+      </node>
+      <node id="TrevorBurnham" label="TrevorBurnham">
+        <attvalues>
+          <attvalue for="0" value="0.004222367530081186" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="icyJoseph" target="TrevorBurnham" id="0" />
+      <edge source="icyJoseph" target="devjiwonchoi" id="1" />
+      <edge source="icyJoseph" target="sattarrasouli" id="2" />
+      <edge source="icyJoseph" target="jperezr21" id="3" />
+      <edge source="icyJoseph" target="congthanh1910" id="4" />
+      <edge source="carlos-dubon" target="jperezr21" id="5" />
+      <edge source="jperezr21" target="carlos-dubon" id="6" />
+      <edge source="peabnuts123" target="edoko" id="7" />
+      <edge source="edoko" target="peabnuts123" id="8" />
+      <edge source="devjiwonchoi" target="icyJoseph" id="9" />
+      <edge source="devjiwonchoi" target="TrevorBurnham" id="10" />
+    </edges>
+  </graph>
+</gexf>

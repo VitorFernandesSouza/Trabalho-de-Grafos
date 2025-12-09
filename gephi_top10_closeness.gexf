@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2025-12-09">
+    <creator>NetworkX 3.4.2</creator>
+  </meta>
+  <graph defaultedgetype="directed" mode="static" name="">
+    <attributes mode="static" class="node">
+      <attribute id="0" title="closeness" type="double" />
+    </attributes>
+    <nodes>
+      <node id="github-actions[bot]" label="github-actions[bot]">
+        <attvalues>
+          <attvalue for="0" value="0.2889465539673048" />
+        </attvalues>
+      </node>
+      <node id="ijjk" label="ijjk">
+        <attvalues>
+          <attvalue for="0" value="0.28813228977906535" />
+        </attvalues>
+      </node>
+      <node id="icyJoseph" label="icyJoseph">
+        <attvalues>
+          <attvalue for="0" value="0.24658058062145277" />
+        </attvalues>
+      </node>
+      <node id="vercel[bot]" label="vercel[bot]">
+        <attvalues>
+          <attvalue for="0" value="0.23137362967750458" />
+        </attvalues>
+      </node>
+      <node id="changeset-bot[bot]" label="changeset-bot[bot]">
+        <attvalues>
+          <attvalue for="0" value="0.21687486452106053" />
+        </attvalues>
+      </node>
+      <node id="codspeed-hq[bot]" label="codspeed-hq[bot]">
+        <attvalues>
+          <attvalue for="0" value="0.21373228141723224" />
+        </attvalues>
+      </node>
+      <node id="eps1lon" label="eps1lon">
+        <attvalues>
+          <attvalue for="0" value="0.2119923543804345" />
+        </attvalues>
+      </node>
+      <node id="ztanner" label="ztanner">
+        <attvalues>
+          <attvalue for="0" value="0.21132300549425362" />
+        </attvalues>
+      </node>
+      <node id="huozhi" label="huozhi">
+        <attvalues>
+          <attvalue for="0" value="0.21113253861233" />
+        </attvalues>
+      </node>
+      <node id="graphite-app[bot]" label="graphite-app[bot]">
+        <attvalues>
+          <attvalue for="0" value="0.20955156899732647" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="github-actions[bot]" target="icyJoseph" id="0" />
+      <edge source="github-actions[bot]" target="ztanner" id="1" />
+      <edge source="ijjk" target="eps1lon" id="2" />
+      <edge source="ijjk" target="huozhi" id="3" />
+      <edge source="ijjk" target="ztanner" id="4" />
+      <edge source="ijjk" target="icyJoseph" id="5" />
+      <edge source="icyJoseph" target="eps1lon" id="6" />
+      <edge source="icyJoseph" target="huozhi" id="7" />
+      <edge source="icyJoseph" target="ztanner" id="8" />
+      <edge source="icyJoseph" target="ijjk" id="9" />
+      <edge source="vercel[bot]" target="ztanner" id="10" />
+      <edge source="vercel[bot]" target="huozhi" id="11" />
+      <edge source="vercel[bot]" target="eps1lon" id="12" />
+      <edge source="vercel[bot]" target="ijjk" id="13" />
+      <edge source="vercel[bot]" target="icyJoseph" id="14" />
+      <edge source="changeset-bot[bot]" target="icyJoseph" id="15" />
+      <edge source="changeset-bot[bot]" target="ijjk" id="16" />
+      <edge source="changeset-bot[bot]" target="huozhi" id="17" />
+      <edge source="changeset-bot[bot]" target="eps1lon" id="18" />
+      <edge source="changeset-bot[bot]" target="ztanner" id="19" />
+      <edge source="codspeed-hq[bot]" target="icyJoseph" id="20" />
+      <edge source="codspeed-hq[bot]" target="huozhi" id="21" />
+      <edge source="codspeed-hq[bot]" target="ztanner" id="22" />
+      <edge source="codspeed-hq[bot]" target="eps1lon" id="23" />
+      <edge source="codspeed-hq[bot]" target="ijjk" id="24" />
+      <edge source="eps1lon" target="icyJoseph" id="25" />
+      <edge source="eps1lon" target="ztanner" id="26" />
+      <edge source="eps1lon" target="huozhi" id="27" />
+      <edge source="eps1lon" target="ijjk" id="28" />
+      <edge source="ztanner" target="eps1lon" id="29" />
+      <edge source="ztanner" target="ijjk" id="30" />
+      <edge source="ztanner" target="icyJoseph" id="31" />
+      <edge source="ztanner" target="huozhi" id="32" />
+      <edge source="huozhi" target="ztanner" id="33" />
+      <edge source="huozhi" target="icyJoseph" id="34" />
+      <edge source="huozhi" target="ijjk" id="35" />
+      <edge source="huozhi" target="eps1lon" id="36" />
+      <edge source="graphite-app[bot]" target="ztanner" id="37" />
+      <edge source="graphite-app[bot]" target="huozhi" id="38" />
+      <edge source="graphite-app[bot]" target="eps1lon" id="39" />
+      <edge source="graphite-app[bot]" target="ijjk" id="40" />
+    </edges>
+  </graph>
+</gexf>

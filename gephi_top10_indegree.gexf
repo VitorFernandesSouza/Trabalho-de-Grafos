@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2025-12-09">
+    <creator>NetworkX 3.4.2</creator>
+  </meta>
+  <graph defaultedgetype="directed" mode="static" name="">
+    <attributes mode="static" class="node">
+      <attribute id="0" title="indegree" type="long" />
+      <attribute id="1" title="outdegree" type="long" />
+    </attributes>
+    <nodes>
+      <node id="icyJoseph" label="icyJoseph">
+        <attvalues>
+          <attvalue for="0" value="64" />
+          <attvalue for="1" value="384" />
+        </attvalues>
+      </node>
+      <node id="devjiwonchoi" label="devjiwonchoi">
+        <attvalues>
+          <attvalue for="0" value="45" />
+          <attvalue for="1" value="47" />
+        </attvalues>
+      </node>
+      <node id="mischnic" label="mischnic">
+        <attvalues>
+          <attvalue for="0" value="40" />
+          <attvalue for="1" value="105" />
+        </attvalues>
+      </node>
+      <node id="ijjk" label="ijjk">
+        <attvalues>
+          <attvalue for="0" value="39" />
+          <attvalue for="1" value="583" />
+        </attvalues>
+      </node>
+      <node id="huozhi" label="huozhi">
+        <attvalues>
+          <attvalue for="0" value="38" />
+          <attvalue for="1" value="57" />
+        </attvalues>
+      </node>
+      <node id="lukesandberg" label="lukesandberg">
+        <attvalues>
+          <attvalue for="0" value="38" />
+          <attvalue for="1" value="28" />
+        </attvalues>
+      </node>
+      <node id="eps1lon" label="eps1lon">
+        <attvalues>
+          <attvalue for="0" value="37" />
+          <attvalue for="1" value="59" />
+        </attvalues>
+      </node>
+      <node id="ztanner" label="ztanner">
+        <attvalues>
+          <attvalue for="0" value="33" />
+          <attvalue for="1" value="93" />
+        </attvalues>
+      </node>
+      <node id="unstubbable" label="unstubbable">
+        <attvalues>
+          <attvalue for="0" value="32" />
+          <attvalue for="1" value="26" />
+        </attvalues>
+      </node>
+      <node id="timneutkens" label="timneutkens">
+        <attvalues>
+          <attvalue for="0" value="31" />
+          <attvalue for="1" value="89" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="icyJoseph" target="eps1lon" id="0" />
+      <edge source="icyJoseph" target="timneutkens" id="1" />
+      <edge source="icyJoseph" target="huozhi" id="2" />
+      <edge source="icyJoseph" target="devjiwonchoi" id="3" />
+      <edge source="icyJoseph" target="lukesandberg" id="4" />
+      <edge source="icyJoseph" target="ztanner" id="5" />
+      <edge source="icyJoseph" target="unstubbable" id="6" />
+      <edge source="icyJoseph" target="ijjk" id="7" />
+      <edge source="devjiwonchoi" target="huozhi" id="8" />
+      <edge source="devjiwonchoi" target="eps1lon" id="9" />
+      <edge source="devjiwonchoi" target="icyJoseph" id="10" />
+      <edge source="devjiwonchoi" target="mischnic" id="11" />
+      <edge source="devjiwonchoi" target="ijjk" id="12" />
+      <edge source="devjiwonchoi" target="ztanner" id="13" />
+      <edge source="mischnic" target="unstubbable" id="14" />
+      <edge source="mischnic" target="eps1lon" id="15" />
+      <edge source="mischnic" target="lukesandberg" id="16" />
+      <edge source="mischnic" target="huozhi" id="17" />
+      <edge source="mischnic" target="devjiwonchoi" id="18" />
+      <edge source="mischnic" target="ztanner" id="19" />
+      <edge source="mischnic" target="timneutkens" id="20" />
+      <edge source="mischnic" target="ijjk" id="21" />
+      <edge source="ijjk" target="mischnic" id="22" />
+      <edge source="ijjk" target="unstubbable" id="23" />
+      <edge source="ijjk" target="eps1lon" id="24" />
+      <edge source="ijjk" target="huozhi" id="25" />
+      <edge source="ijjk" target="ztanner" id="26" />
+      <edge source="ijjk" target="lukesandberg" id="27" />
+      <edge source="ijjk" target="devjiwonchoi" id="28" />
+      <edge source="ijjk" target="timneutkens" id="29" />
+      <edge source="ijjk" target="icyJoseph" id="30" />
+      <edge source="huozhi" target="ztanner" id="31" />
+      <edge source="huozhi" target="icyJoseph" id="32" />
+      <edge source="huozhi" target="mischnic" id="33" />
+      <edge source="huozhi" target="unstubbable" id="34" />
+      <edge source="huozhi" target="ijjk" id="35" />
+      <edge source="huozhi" target="devjiwonchoi" id="36" />
+      <edge source="huozhi" target="timneutkens" id="37" />
+      <edge source="huozhi" target="eps1lon" id="38" />
+      <edge source="lukesandberg" target="mischnic" id="39" />
+      <edge source="lukesandberg" target="huozhi" id="40" />
+      <edge source="lukesandberg" target="timneutkens" id="41" />
+      <edge source="lukesandberg" target="devjiwonchoi" id="42" />
+      <edge source="lukesandberg" target="ztanner" id="43" />
+      <edge source="lukesandberg" target="ijjk" id="44" />
+      <edge source="lukesandberg" target="icyJoseph" id="45" />
+      <edge source="eps1lon" target="icyJoseph" id="46" />
+      <edge source="eps1lon" target="mischnic" id="47" />
+      <edge source="eps1lon" target="unstubbable" id="48" />
+      <edge source="eps1lon" target="devjiwonchoi" id="49" />
+      <edge source="eps1lon" target="ztanner" id="50" />
+      <edge source="eps1lon" target="lukesandberg" id="51" />
+      <edge source="eps1lon" target="huozhi" id="52" />
+      <edge source="eps1lon" target="ijjk" id="53" />
+      <edge source="eps1lon" target="timneutkens" id="54" />
+      <edge source="ztanner" target="unstubbable" id="55" />
+      <edge source="ztanner" target="eps1lon" id="56" />
+      <edge source="ztanner" target="ijjk" id="57" />
+      <edge source="ztanner" target="devjiwonchoi" id="58" />
+      <edge source="ztanner" target="mischnic" id="59" />
+      <edge source="ztanner" target="icyJoseph" id="60" />
+      <edge source="ztanner" target="huozhi" id="61" />
+      <edge source="ztanner" target="lukesandberg" id="62" />
+      <edge source="unstubbable" target="icyJoseph" id="63" />
+      <edge source="unstubbable" target="huozhi" id="64" />
+      <edge source="unstubbable" target="eps1lon" id="65" />
+      <edge source="unstubbable" target="mischnic" id="66" />
+      <edge source="unstubbable" target="ztanner" id="67" />
+      <edge source="unstubbable" target="timneutkens" id="68" />
+      <edge source="unstubbable" target="devjiwonchoi" id="69" />
+      <edge source="unstubbable" target="lukesandberg" id="70" />
+      <edge source="unstubbable" target="ijjk" id="71" />
+      <edge source="timneutkens" target="mischnic" id="72" />
+      <edge source="timneutkens" target="devjiwonchoi" id="73" />
+      <edge source="timneutkens" target="eps1lon" id="74" />
+      <edge source="timneutkens" target="unstubbable" id="75" />
+      <edge source="timneutkens" target="lukesandberg" id="76" />
+      <edge source="timneutkens" target="huozhi" id="77" />
+      <edge source="timneutkens" target="ijjk" id="78" />
+      <edge source="timneutkens" target="ztanner" id="79" />
+    </edges>
+  </graph>
+</gexf>

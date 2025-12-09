@@ -28,7 +28,7 @@ O algoritmo também trata casos especiais de usuários sem interações de saíd
 
 Para identificar os usuários mais bem posicionados na rede de colaboração, foi implementado o método `closeness_centrality()`, que calcula quão próximo cada usuário está de todos os outros colaboradores. Usuários com alta proximidade conseguem alcançar rapidamente qualquer outro usuário através de caminhos curtos de interação, posicionando-se estrategicamente no centro da rede.
 
-O método utiliza o algoritmo BFS (Busca em Largura) para calcular a distância mais curta de cada usuário para todos os outros usuários alcançáveis no grafo. Para cada usuário, soma-se todas essas distâncias e aplica-se a fórmula de Wasserman e Faust, que é apropriada para grafos que podem conter partes desconectadas. A fórmula pondera a centralidade considerando tanto o número de usuários alcançáveis quanto a soma total das distâncias até eles.
+O método utiliza o algoritmo BFS (Busca em Largura) para calcular a distância mais curta de cada usuário para todos os outros usuários alcançáveis no grafo. Para cada usuário, soma-se todas essas distâncias e aplica-se a f		, que é apropriada para grafos que podem conter partes desconectadas. A fórmula pondera a centralidade considerando tanto o número de usuários alcançáveis quanto a soma total das distâncias até eles.
 
 Essa métrica identifica usuários centralmente localizados na rede, que servem como pontos de convergência para a comunicação e colaboração. Usuários com alta closeness centrality podem disseminar informação rapidamente pelo projeto, facilitando a coordenação entre diferentes áreas e contribuidores.
 
