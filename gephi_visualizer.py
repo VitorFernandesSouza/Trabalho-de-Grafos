@@ -2,7 +2,10 @@ import networkx as nx
 from graph_lib.abstract_graph import AbstractGraph
 from mining.analyzer import GraphAnalyzer
 import json
+import os
 from typing import Dict, List, Tuple
+
+GEPHI_GRAPHS_DIR = "gephi_graphs"
 
 class GephiVisualizer:
     """
@@ -17,78 +20,88 @@ class GephiVisualizer:
     def __init__(self, graph: AbstractGraph):
         self.graph = graph
         self.analyzer = GraphAnalyzer()
+        self._ensure_output_dir()
+
+    def _ensure_output_dir(self):
+        """Create the output directory if it doesn't exist"""
+        if not os.path.exists(GEPHI_GRAPHS_DIR):
+            os.makedirs(GEPHI_GRAPHS_DIR)
+            print(f"Created directory: {GEPHI_GRAPHS_DIR}")
         
     def create_top_indegree_graph(self, output_path: str = "gephi_top10_indegree.gexf", top_n: int = 10):
         """Create a graph visualization for top N users by in-degree"""
         print(f"Creating Top {top_n} In-degree graph...")
-        
+
         # Get degree centrality metrics
         degree_metrics = self.analyzer.degree_centrality(self.graph)
-        
+
         # Sort by in-degree
         sorted_by_indegree = sorted(degree_metrics.items(), key=lambda x: x[1][0], reverse=True)
         top_users = [user[0] for user in sorted_by_indegree[:top_n]]
-        
+
         # Create subgraph with top users and their connections
         G = self._create_subgraph(top_users, degree_metrics)
-        
+
         # Add in-degree as node attribute for visualization
         for node in G.nodes():
             if node in degree_metrics:
                 G.nodes[node]['indegree'] = degree_metrics[node][0]
                 G.nodes[node]['outdegree'] = degree_metrics[node][1]
-        
+
         # Export to GEXF format for Gephi
-        nx.write_gexf(G, output_path)
-        print(f"Graph saved to {output_path}")
+        full_path = os.path.join(GEPHI_GRAPHS_DIR, output_path)
+        nx.write_gexf(G, full_path)
+        print(f"Graph saved to {full_path}")
         return top_users
     
     def create_top_pagerank_graph(self, output_path: str = "gephi_top10_pagerank.gexf", top_n: int = 10):
         """Create a graph visualization for top N users by PageRank"""
         print(f"Creating Top {top_n} PageRank graph...")
-        
+
         # Calculate PageRank
         pagerank_scores = self.analyzer.pagerank(self.graph)
-        
+
         # Sort by PageRank score
         sorted_by_pagerank = sorted(pagerank_scores.items(), key=lambda x: x[1], reverse=True)
         top_users = [user[0] for user in sorted_by_pagerank[:top_n]]
-        
+
         # Create subgraph
         G = self._create_subgraph(top_users, pagerank_scores)
-        
+
         # Add PageRank as node attribute
         for node in G.nodes():
             if node in pagerank_scores:
                 G.nodes[node]['pagerank'] = pagerank_scores[node]
-        
+
         # Export to GEXF
-        nx.write_gexf(G, output_path)
-        print(f"Graph saved to {output_path}")
+        full_path = os.path.join(GEPHI_GRAPHS_DIR, output_path)
+        nx.write_gexf(G, full_path)
+        print(f"Graph saved to {full_path}")
         return top_users
     
     def create_top_closeness_graph(self, output_path: str = "gephi_top10_closeness.gexf", top_n: int = 10):
         """Create a graph visualization for top N users by Closeness Centrality"""
         print(f"Creating Top {top_n} Closeness Centrality graph...")
-        
+
         # Calculate Closeness Centrality
         closeness_scores = self.analyzer.closeness_centrality(self.graph)
-        
+
         # Sort by closeness score
         sorted_by_closeness = sorted(closeness_scores.items(), key=lambda x: x[1], reverse=True)
         top_users = [user[0] for user in sorted_by_closeness[:top_n]]
-        
+
         # Create subgraph
         G = self._create_subgraph(top_users, closeness_scores)
-        
+
         # Add closeness as node attribute
         for node in G.nodes():
             if node in closeness_scores:
                 G.nodes[node]['closeness'] = closeness_scores[node]
-        
+
         # Export to GEXF
-        nx.write_gexf(G, output_path)
-        print(f"Graph saved to {output_path}")
+        full_path = os.path.join(GEPHI_GRAPHS_DIR, output_path)
+        nx.write_gexf(G, full_path)
+        print(f"Graph saved to {full_path}")
         return top_users
     
     def create_bridge_users_graph(self, output_path: str = "gephi_top5_bridges.gexf", top_n: int = 5):
@@ -124,8 +137,9 @@ class GephiVisualizer:
                         G.add_edge(bridge_user, neighbor_label)
 
         # Export to GEXF
-        nx.write_gexf(G, output_path)
-        print(f"Graph saved to {output_path}")
+        full_path = os.path.join(GEPHI_GRAPHS_DIR, output_path)
+        nx.write_gexf(G, full_path)
+        print(f"Graph saved to {full_path}")
         return top_bridges
     
     def create_communities_graph(self, output_path: str = "gephi_top5_communities.gexf", top_n: int = 5):
@@ -166,9 +180,10 @@ class GephiVisualizer:
                         G.add_edge(node, neighbor_label)
         
         # Export to GEXF
-        nx.write_gexf(G, output_path)
-        print(f"Graph saved to {output_path}")
-        
+        full_path = os.path.join(GEPHI_GRAPHS_DIR, output_path)
+        nx.write_gexf(G, full_path)
+        print(f"Graph saved to {full_path}")
+
         # Return community information
         community_info = []
         for i, comm_id in enumerate(top_communities[:top_n]):
@@ -229,18 +244,19 @@ class GephiVisualizer:
         results['top_communities'] = self.create_communities_graph()
         
         # Save results summary
-        with open('gephi_visualization_summary.json', 'w') as f:
+        summary_path = os.path.join(GEPHI_GRAPHS_DIR, 'gephi_visualization_summary.json')
+        with open(summary_path, 'w') as f:
             json.dump(results, f, indent=2)
-        
+
         print("\nAll visualizations created successfully!")
-        print("Files created:")
+        print(f"Files created in '{GEPHI_GRAPHS_DIR}/' folder:")
         print("- gephi_top10_indegree.gexf")
         print("- gephi_top10_pagerank.gexf")
         print("- gephi_top10_closeness.gexf")
         print("- gephi_top5_bridges.gexf")
         print("- gephi_top5_communities.gexf")
         print("- gephi_visualization_summary.json")
-        
+
         return results
 
 

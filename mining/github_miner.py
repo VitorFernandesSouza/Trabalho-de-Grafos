@@ -5,6 +5,7 @@ import os
 from datetime import datetime
 from typing import Dict, List, Tuple
 from graph_lib.adjacency_list import AdjacencyListGraph
+from graph_lib.adjacency_matrix import AdjacencyMatrixGraph
 from graph_lib.abstract_graph import AbstractGraph
 
 # PESOS
@@ -140,15 +141,18 @@ class GitHubMiner:
             print("\nSalvando dados automaticamente...")
             self.save_data_to_json()
 
-    def _build_graph_from_interactions(self, interaction_types: List[str] = None) -> AbstractGraph:
-        graph = AdjacencyListGraph(self.next_id)
-        
+    def _build_graph_from_interactions(self, interaction_types: List[str] = None, use_matrix: bool = False) -> AbstractGraph:
+        if use_matrix:
+            graph = AdjacencyMatrixGraph(self.next_id)
+        else:
+            graph = AdjacencyListGraph(self.next_id)
+
         inv_map = {v: k for k, v in self.user_map.items()}
         for uid, login in inv_map.items():
             graph.set_vertex_label(uid, login)
-            
+
         edge_weights: Dict[Tuple[int, int], float] = {}
-        
+
         for u, v, type_, weight in self.raw_interactions:
             if interaction_types and type_ not in interaction_types:
                 continue
@@ -160,7 +164,7 @@ class GitHubMiner:
         for (u, v), w in edge_weights.items():
             graph.addEdge(u, v)
             graph.setEdgeWeight(u, v, w)
-            
+
         return graph
 
     def get_graph_1_comments(self) -> AbstractGraph:
@@ -174,6 +178,12 @@ class GitHubMiner:
 
     def get_grafo_integrado(self) -> AbstractGraph:
         return self._build_graph_from_interactions(None)
+
+    def get_grafo_integrado_both(self) -> Tuple[AbstractGraph, AbstractGraph]:
+        """Returns (list_graph, matrix_graph)"""
+        list_graph = self._build_graph_from_interactions(None, use_matrix=False)
+        matrix_graph = self._build_graph_from_interactions(None, use_matrix=True)
+        return list_graph, matrix_graph
 
     def save_data_to_json(self, filename: str = None):
         

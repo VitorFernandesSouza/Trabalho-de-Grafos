@@ -22,8 +22,10 @@ def main_menu():
     global current_miner
     miner = None
     grafo_integrado = None
+    grafo_list = None
+    grafo_matrix = None
     grafo = {}
-    
+
     signal.signal(signal.SIGINT, signal_handler)
     
     print("Verificando configuração salva...")
@@ -45,9 +47,11 @@ def main_menu():
         print("4. Salvar Dados Manualmente")
         print("5. Construir Grafos Individuais")
         print("6. Construir Grafo Integrado")
-        print("7. Analisar Grafo Integrado")
-        print("8. Exportar para CSV (Nós/Arestas)")
-        print("9. Exportar para GEXF (Gephi)")
+        print("7. Construir Grafo Integrado (Lista e Matriz)")
+        print("8. Analisar Grafo Integrado")
+        print("9. Exportar para CSV (Nós/Arestas)")
+        print("10. Exportar para GEXF (Gephi)")
+        print("11. Gerar Visualizações Gephi (Top Rankings)")
         print("0. Sair")
         
         opt = input("\nEscolha uma opção: ")
@@ -126,8 +130,19 @@ def main_menu():
             input("Pressione Enter...")
 
         elif opt == '7':
+            if not miner or not miner.raw_interactions:
+                print("Sem dados.")
+                continue
+            print("Construindo grafos com ambas implementações...")
+            grafo_list, grafo_matrix = miner.get_grafo_integrado_both()
+            grafo_integrado = grafo_list  # Set default to list for compatibility
+            print(f"Lista de Adjacência: {grafo_list.getVertexCount()} nós, {grafo_list.getEdgeCount()} arestas.")
+            print(f"Matriz de Adjacência: {grafo_matrix.getVertexCount()} nós, {grafo_matrix.getEdgeCount()} arestas.")
+            input("Pressione Enter...")
+
+        elif opt == '8':
             if not grafo_integrado:
-                print("Construa o grafo integrado primeiro (Opção 6).")
+                print("Construa o grafo integrado primeiro (Opção 6 ou 7).")
                 continue
             # Executa apenas uma métrica rápida para exemplo, ou todas se preferir
             print("Calculando densidade...")
@@ -135,19 +150,36 @@ def main_menu():
             print("(Use o menu original para ver todas as métricas)")
             input("Pressione Enter...")
 
-        elif opt == '8':
+        elif opt == '9':
             if grafo_integrado:
                 grafo_integrado.exportToGEPHI("grafo_integrado")
             else:
                 print("Grafo não existe.")
             input("Pressione Enter...")
 
-        elif opt == '9':
+        elif opt == '10':
             if grafo_integrado:
                 grafo_integrado.exportToGEXF("grafo_integrado")
             else:
                 print("Grafo não existe.")
             input("Pressione Enter...")
+
+        elif opt == '11':
+            if not grafo_integrado:
+                print("Construa o grafo integrado primeiro (Opção 6 ou 7).")
+                continue
+            print("\nGerando visualizações para Gephi...")
+            print("Importando módulo de visualização...")
+            from gephi_visualizer import GephiVisualizer
+
+            visualizer = GephiVisualizer(grafo_integrado)
+            print("Criando todas as visualizações...")
+            results = visualizer.create_all_visualizations()
+
+            print("\n=== Resumo ===")
+            print(f"Top 5 Bridge Users: {', '.join(results['top_bridges'][:5])}")
+            print(f"Arquivos .gexf gerados com sucesso!")
+            input("\nPressione Enter...")
 
         elif opt == '0':
             sys.exit()

@@ -94,7 +94,7 @@ def main():
     
     print("\n=== Instructions for Gephi ===")
     print("\n1. Open Gephi")
-    print("2. Go to File > Open and select one of the .gexf files")
+    print("2. Go to File > Open and select one of the .gexf files from the 'gephi_graphs/' folder")
     print("3. In the Overview tab:")
     print("   - Use ForceAtlas 2 layout for better visualization")
     print("   - Adjust node size based on the relevant metric (in-degree, PageRank, etc.)")
@@ -102,8 +102,9 @@ def main():
     print("4. In the Preview tab:")
     print("   - Adjust settings for better visualization")
     print("   - Export as PNG or PDF\n")
-    
+
     print("All visualizations have been created successfully!")
+    print(f"Check the 'gephi_graphs/' folder for all generated files.")
 
 
 if __name__ == "__main__":
