@@ -39,48 +39,48 @@
     "github-actions[bot]",
     "icyJoseph",
     "ztanner",
-    "timneutkens",
-    "ijjk"
+    "ijjk",
+    "timneutkens"
   ],
   "top_communities": [
     {
       "community_id": 37,
       "rank": 1,
-      "size": 598,
+      "size": 534,
       "sample_members": [
         "ijjk",
+        "Lokeninfinitypoint",
+        "chatgpt-codex-connector[bot]",
         "agadzik",
         "davbrito",
         "maxscn",
         "aymericzip",
         "adamsoderstrom",
         "vercel[bot]",
-        "graphite-app[bot]",
-        "comxd",
-        "styfle"
+        "graphite-app[bot]"
       ]
     },
     {
       "community_id": 16,
       "rank": 2,
-      "size": 444,
+      "size": 447,
       "sample_members": [
+        "01026551290",
         "github-actions[bot]",
         "fecommunity",
         "epaynter",
         "dandaniel5",
+        "Typhon0130",
         "ryota-murakami",
         "ehsanghaffar",
-        "funnelfiasco",
-        "rRakarare",
-        "AryanVBW",
-        "molebox"
+        "franknoel",
+        "baginskijakub"
       ]
     },
     {
-      "community_id": 38,
+      "community_id": 167,
       "rank": 3,
-      "size": 412,
+      "size": 405,
       "sample_members": [
         "ztanner",
         "nextjs-bot",
@@ -97,35 +97,35 @@
     {
       "community_id": 5,
       "rank": 4,
-      "size": 226,
+      "size": 280,
       "sample_members": [
         "altendky",
         "icyJoseph",
+        "artemzhdev",
+        "rafael-tanaka",
+        "alexfarrill",
         "jonaseriksson84",
-        "01026551290",
-        "shiqocred",
-        "Ochirsaikhan",
-        "Linuhusainnk",
-        "Typhon0130",
         "Musar98",
-        "DeveloperViraj"
+        "DeveloperViraj",
+        "ranjith-devop",
+        "hernan-yadiel"
       ]
     },
     {
-      "community_id": 300,
+      "community_id": 607,
       "rank": 5,
-      "size": 19,
+      "size": 20,
       "sample_members": [
-        "columk1",
-        "CHC383",
-        "abhijit945",
-        "lesliechueng1996",
-        "matbour",
-        "jmanywhere",
-        "iamleniac",
-        "giovanni-depalma",
-        "daviseford",
-        "wslp12"
+        "bennajah",
+        "Debbl",
+        "RiskyMH",
+        "xmlking",
+        "Jayllyz",
+        "yusing",
+        "darphiz",
+        "undead-reaper",
+        "amirqasemi74",
+        "shadow173"
       ]
     }
   ]

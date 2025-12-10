@@ -94,35 +94,35 @@ class GephiVisualizer:
     def create_bridge_users_graph(self, output_path: str = "gephi_top5_bridges.gexf", top_n: int = 5):
         """Create a graph visualization for top N bridge users"""
         print(f"Creating Top {top_n} Bridge Users graph...")
-        
+
         # First detect communities
         communities = self.analyzer.detect_communities_label_propagation(self.graph)
-        
+
         # Find bridge users
         bridges = self.analyzer.analyze_bridging_ties(self.graph, communities)
-        
+
         # Get top bridge users
         top_bridges = [bridge[0] for bridge in bridges[:top_n]]
-        
-        # Create graph including bridge users and their connections across communities
+
+        # Create graph including only bridge users and their connections to each other
         G = nx.DiGraph()
-        
-        # Add bridge users and their neighbors
+
+        # Add bridge users as nodes
+        for bridge_user in top_bridges:
+            G.add_node(bridge_user)
+            G.nodes[bridge_user]['community'] = communities.get(bridge_user, -1)
+            G.nodes[bridge_user]['is_bridge'] = True
+
+        # Add edges only between bridge users
         for bridge_user in top_bridges:
             bridge_idx = self._get_vertex_index(bridge_user)
             if bridge_idx is not None:
-                G.add_node(bridge_user)
-                G.nodes[bridge_user]['community'] = communities.get(bridge_user, -1)
-                G.nodes[bridge_user]['is_bridge'] = True
-                
-                # Add all neighbors of bridge users
                 for neighbor_idx in self.graph.getNeighbors(bridge_idx):
                     neighbor_label = self.graph.get_vertex_label(neighbor_idx)
-                    G.add_node(neighbor_label)
-                    G.nodes[neighbor_label]['community'] = communities.get(neighbor_label, -1)
-                    G.nodes[neighbor_label]['is_bridge'] = neighbor_label in top_bridges
-                    G.add_edge(bridge_user, neighbor_label)
-        
+                    # Only add edge if neighbor is also in top bridge users
+                    if neighbor_label in top_bridges:
+                        G.add_edge(bridge_user, neighbor_label)
+
         # Export to GEXF
         nx.write_gexf(G, output_path)
         print(f"Graph saved to {output_path}")

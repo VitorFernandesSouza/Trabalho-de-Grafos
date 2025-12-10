@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
+  <meta lastmodifieddate="2025-12-10">
+    <creator>NetworkX 3.6.1</creator>
+  </meta>
+  <graph defaultedgetype="directed" mode="static" name="">
+    <attributes mode="static" class="node">
+      <attribute id="0" title="community" type="long" />
+      <attribute id="1" title="is_bridge" type="boolean" />
+    </attributes>
+    <nodes>
+      <node id="github-actions[bot]" label="github-actions[bot]">
+        <attvalues>
+          <attvalue for="0" value="16" />
+          <attvalue for="1" value="true" />
+        </attvalues>
+      </node>
+      <node id="icyJoseph" label="icyJoseph">
+        <attvalues>
+          <attvalue for="0" value="7" />
+          <attvalue for="1" value="true" />
+        </attvalues>
+      </node>
+      <node id="ztanner" label="ztanner">
+        <attvalues>
+          <attvalue for="0" value="7" />
+          <attvalue for="1" value="true" />
+        </attvalues>
+      </node>
+      <node id="ijjk" label="ijjk">
+        <attvalues>
+          <attvalue for="0" value="7" />
+          <attvalue for="1" value="true" />
+        </attvalues>
+      </node>
+      <node id="timneutkens" label="timneutkens">
+        <attvalues>
+          <attvalue for="0" value="7" />
+          <attvalue for="1" value="true" />
+        </attvalues>
+      </node>
+    </nodes>
+    <edges>
+      <edge source="github-actions[bot]" target="icyJoseph" id="0" />
+      <edge source="github-actions[bot]" target="ztanner" id="1" />
+      <edge source="github-actions[bot]" target="timneutkens" id="2" />
+      <edge source="icyJoseph" target="timneutkens" id="3" />
+      <edge source="icyJoseph" target="ztanner" id="4" />
+      <edge source="icyJoseph" target="ijjk" id="5" />
+      <edge source="ztanner" target="ijjk" id="6" />
+      <edge source="ztanner" target="icyJoseph" id="7" />
+      <edge source="ijjk" target="ztanner" id="8" />
+      <edge source="ijjk" target="timneutkens" id="9" />
+      <edge source="ijjk" target="icyJoseph" id="10" />
+      <edge source="timneutkens" target="ijjk" id="11" />
+      <edge source="timneutkens" target="ztanner" id="12" />
+    </edges>
+  </graph>
+</gexf>

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <gexf xmlns="http://www.gexf.net/1.2draft" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.gexf.net/1.2draft http://www.gexf.net/1.2draft/gexf.xsd" version="1.2">
-  <meta lastmodifieddate="2025-12-09">
-    <creator>NetworkX 3.4.2</creator>
+  <meta lastmodifieddate="2025-12-10">
+    <creator>NetworkX 3.6.1</creator>
   </meta>
   <graph defaultedgetype="directed" mode="static" name="">
     <attributes mode="static" class="node">
@@ -10,52 +10,52 @@
     <nodes>
       <node id="icyJoseph" label="icyJoseph">
         <attvalues>
-          <attvalue for="0" value="0.010914498917324133" />
+          <attvalue for="0" value="0.01091449891732409" />
         </attvalues>
       </node>
       <node id="carlos-dubon" label="carlos-dubon">
         <attvalues>
-          <attvalue for="0" value="0.010014858314548717" />
+          <attvalue for="0" value="0.010014858314548675" />
         </attvalues>
       </node>
       <node id="jperezr21" label="jperezr21">
         <attvalues>
-          <attvalue for="0" value="0.009772442738727955" />
+          <attvalue for="0" value="0.009772442738727917" />
         </attvalues>
       </node>
       <node id="peabnuts123" label="peabnuts123">
         <attvalues>
-          <attvalue for="0" value="0.005632499588832929" />
+          <attvalue for="0" value="0.005632499588832905" />
         </attvalues>
       </node>
       <node id="edoko" label="edoko">
         <attvalues>
-          <attvalue for="0" value="0.005239364365140484" />
+          <attvalue for="0" value="0.005239364365140465" />
         </attvalues>
       </node>
       <node id="devjiwonchoi" label="devjiwonchoi">
         <attvalues>
-          <attvalue for="0" value="0.005021192722075085" />
+          <attvalue for="0" value="0.005021192722075066" />
         </attvalues>
       </node>
       <node id="CHC383" label="CHC383">
         <attvalues>
-          <attvalue for="0" value="0.004618897711447329" />
+          <attvalue for="0" value="0.004618897711447313" />
         </attvalues>
       </node>
       <node id="sattarrasouli" label="sattarrasouli">
         <attvalues>
-          <attvalue for="0" value="0.00439530567033519" />
+          <attvalue for="0" value="0.004395305670335171" />
         </attvalues>
       </node>
       <node id="congthanh1910" label="congthanh1910">
         <attvalues>
-          <attvalue for="0" value="0.004304905746461071" />
+          <attvalue for="0" value="0.004304905746461054" />
         </attvalues>
       </node>
       <node id="TrevorBurnham" label="TrevorBurnham">
         <attvalues>
-          <attvalue for="0" value="0.004222367530081186" />
+          <attvalue for="0" value="0.004222367530081169" />
         </attvalues>
       </node>
     </nodes>
